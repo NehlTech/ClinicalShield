@@ -1,0 +1,58 @@
+{
+  "Standard BERT": {
+    "accuracy": 0.9962121212121212,
+    "precision": 0.96875,
+    "recall": 0.96875,
+    "f1": 0.96875,
+    "latency_ms": 24.9,
+    "mechanism": "Generic Lexical Encoding"
+  },
+  "PubMedBERT-Only": {
+    "accuracy": 0.9943181818181818,
+    "precision": 1.0,
+    "recall": 0.90625,
+    "f1": 0.9508196721311475,
+    "latency_ms": 25.9,
+    "mechanism": "Domain-Specific Encoding (no Module 1)"
+  },
+  "Block-and-Drop": {
+    "accuracy": 0.8465909090909091,
+    "precision": 0.0196078431372549,
+    "recall": 0.03125,
+    "f1": 0.024096385542168676,
+    "latency_ms": 3.0801,
+    "mechanism": "Deterministic Keyword Filtering"
+  },
+  "Perplexity Filtering": {
+    "accuracy": 0.9053030303030303,
+    "precision": 0.359375,
+    "recall": 0.71875,
+    "f1": 0.4791666666666667,
+    "latency_ms": 25.6,
+    "mechanism": "Statistical Anomaly Detection"
+  },
+  "PromptGuard": {
+    "accuracy": 0.9564393939393939,
+    "precision": 1.0,
+    "recall": 0.28125,
+    "f1": 0.43902439024390244,
+    "latency_ms": 41.1,
+    "mechanism": "Generative Safety Classifier"
+  },
+  "SmoothLLM": {
+    "accuracy": 0.8787878787878788,
+    "precision": 0.32608695652173914,
+    "recall": 0.9375,
+    "f1": 0.4838709677419355,
+    "latency_ms": 143.5,
+    "mechanism": "Input Character Perturbation"
+  },
+  "ClinicalShield (Ours)": {
+    "accuracy": 0.9223,
+    "precision": 1.0,
+    "recall": 0.8395,
+    "f1": 0.8437,
+    "latency_ms": 185.9,
+    "mechanism": "Multi-Layer Domain-Specific Defense"
+  }
+}
