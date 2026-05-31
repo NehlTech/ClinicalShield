@@ -1,0 +1,22 @@
+model:
+  encoder: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
+  max_length: 512
+  num_labels: 2
+  dropout: 0.1
+
+training:
+  epochs: 5
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  batch_size: 16
+  class_weights: {benign: 1.0, adversarial: 3.0}
+  early_stopping_patience: 3
+  seed: 42
+
+data:
+  test_size: 0.15
+  val_size: 0.15
+
+sanitization:
+  utility_threshold: 0.95
+  risk_threshold: 0.5
