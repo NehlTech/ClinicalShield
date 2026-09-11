@@ -1,0 +1,79 @@
+{
+  "notebook": "04_module1_encoding",
+  "seed": 42,
+  "probe_design": {
+    "method": "paired probe set; same hosts across all formats",
+    "hosts": "benign chunks of the test partition only",
+    "n_hosts": 446,
+    "n_per_format": 446,
+    "formats": [
+      "plaintext",
+      "base64",
+      "hex",
+      "unicode",
+      "url",
+      "leet"
+    ],
+    "rationale": "Module 1 is rule-based and untrained. Per-format rates are reported on a paired set drawn entirely from held-out groups, so no partition is mixed and the encoding is the only variable.",
+    "ci_method": "Wilson score interval, 95%"
+  },
+  "results": {
+    "plaintext": {
+      "n": 446,
+      "detected": 9,
+      "rate": 0.020179372197309416,
+      "ci_low": 0.010651914384202401,
+      "ci_high": 0.03790206550560769,
+      "decode_fidelity": 0.020179372197309416
+    },
+    "base64": {
+      "n": 446,
+      "detected": 446,
+      "rate": 1.0,
+      "ci_low": 0.9914601050680949,
+      "ci_high": 0.9999999999999998,
+      "decode_fidelity": 1.0
+    },
+    "hex": {
+      "n": 446,
+      "detected": 446,
+      "rate": 1.0,
+      "ci_low": 0.9914601050680949,
+      "ci_high": 0.9999999999999998,
+      "decode_fidelity": 1.0
+    },
+    "unicode": {
+      "n": 446,
+      "detected": 446,
+      "rate": 1.0,
+      "ci_low": 0.9914601050680949,
+      "ci_high": 0.9999999999999998,
+      "decode_fidelity": 1.0
+    },
+    "url": {
+      "n": 446,
+      "detected": 446,
+      "rate": 1.0,
+      "ci_low": 0.9914601050680949,
+      "ci_high": 0.9999999999999998,
+      "decode_fidelity": 1.0
+    },
+    "leet": {
+      "n": 446,
+      "detected": 446,
+      "rate": 1.0,
+      "ci_low": 0.9914601050680949,
+      "ci_high": 0.9999999999999998,
+      "decode_fidelity": 1.0
+    },
+    "control_clean": {
+      "n": 446,
+      "detected": 9,
+      "rate": 0.020179372197309416,
+      "ci_low": 0.010651914384202401,
+      "ci_high": 0.03790206550560769,
+      "decode_fidelity": null
+    }
+  },
+  "generated_at": "2026-09-11 20:25:08 UTC"
+}
