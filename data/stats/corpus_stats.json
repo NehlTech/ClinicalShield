@@ -1,0 +1,39 @@
+{
+  "patient_cases": {
+    "name": "Patient cases",
+    "n": 1000,
+    "mean": 436.136,
+    "std": 284.79025177136947,
+    "min": 85,
+    "max": 3223,
+    "p05": 132.95,
+    "p25": 255.0,
+    "median": 364.0,
+    "p75": 548.75,
+    "p95": 946.0999999999999
+  },
+  "rag_corpus": {
+    "name": "RAG corpus",
+    "n": 321,
+    "mean": 938.2866043613707,
+    "std": 984.1907908904229,
+    "min": 42,
+    "max": 6045,
+    "p05": 69.0,
+    "p25": 219.0,
+    "median": 641.0,
+    "p75": 1266.0,
+    "p95": 2949.0
+  },
+  "length_matching_target": {
+    "note": "NB02 must draw injected-document lengths from this distribution",
+    "source": "rag_corpus",
+    "percentiles": {
+      "p05": 69.0,
+      "p25": 219.0,
+      "median": 641.0,
+      "p75": 1266.0,
+      "p95": 2949.0
+    }
+  }
+}

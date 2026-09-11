@@ -1,0 +1,59 @@
+{
+  "notebook": "01_corpus_construction",
+  "seed": 42,
+  "config": {
+    "CORPUS_TIER": "public",
+    "N_PATIENT_CASES": 1000,
+    "N_FDA_LABELS": 600,
+    "MIMIC_NOTE_PATH": "data/raw/mimic-iv-note/discharge.csv",
+    "SEED": 42,
+    "USE_DRIVE": true,
+    "DRIVE_DIR": "/content/drive/MyDrive/ClinicalShield_v2",
+    "PUSH_TO_GITHUB": true,
+    "GITHUB_REPO": "NehlTech/ClinicalShield",
+    "GITHUB_BRANCH": "v2-revision",
+    "GIT_USER_NAME": "Adu-Boahene Bright",
+    "GIT_USER_EMAIL": "baduboahene@st.knust.edu.gh"
+  },
+  "provenance": {
+    "patient_cases": {
+      "tier": "public",
+      "dataset": "zhengyun21/PMC-Patients",
+      "redistributable": true
+    },
+    "rag_corpus": {
+      "source": "openFDA drug label API",
+      "endpoint": "https://api.fda.gov/drug/label.json",
+      "drugs_requested": 49,
+      "drugs_retrieved": 48,
+      "drugs_failed": [],
+      "sections": [
+        "indications_and_usage",
+        "dosage_and_administration",
+        "contraindications",
+        "warnings_and_cautions",
+        "drug_interactions",
+        "boxed_warning",
+        "adverse_reactions",
+        "use_in_specific_populations"
+      ],
+      "redistributable": true
+    }
+  },
+  "counts": {
+    "patient_cases": 1000,
+    "rag_documents": 321,
+    "patient_groups": 1000,
+    "rag_groups": 321
+  },
+  "files": {
+    "patient_cases.jsonl": {
+      "rows": 1000,
+      "sha256_16": "8bbea737e52f0f96"
+    },
+    "rag_corpus.jsonl": {
+      "rows": 321,
+      "sha256_16": "96ab204778088d5b"
+    }
+  }
+}

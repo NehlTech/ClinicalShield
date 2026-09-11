@@ -12,3 +12,6 @@ data/raw/
 data/processed/
 data/splits/
 data/raw/mpib_raw/
+
+data/corpus/*.jsonl
+*.ckpt
