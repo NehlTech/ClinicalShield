@@ -1,0 +1,68 @@
+{
+  "notebook": "02_attack_generation",
+  "seed": 42,
+  "config": {
+    "SEED": 42,
+    "CHUNK_WORDS": 250,
+    "CHUNK_OVERLAP": 40,
+    "MIN_CHUNK_WORDS": 60,
+    "POISON_FRACTION": 0.45,
+    "VECTOR_MIX": {
+      "override": 0.5,
+      "misinformation": 0.5
+    },
+    "ENCODINGS": [
+      "plaintext",
+      "base64",
+      "hex",
+      "unicode",
+      "url",
+      "leet"
+    ],
+    "ENCODED_FRACTION": 0.5,
+    "USE_DRIVE": true,
+    "DRIVE_DIR": "/content/drive/MyDrive/ClinicalShield_v2",
+    "PUSH_TO_GITHUB": true,
+    "GITHUB_REPO": "NehlTech/ClinicalShield",
+    "GITHUB_BRANCH": "v2-revision",
+    "GIT_USER_NAME": "Adu-Boahene Bright",
+    "GIT_USER_EMAIL": "baduboahene@st.knust.edu.gh"
+  },
+  "counts": {
+    "source_documents": 1604,
+    "chunks": 5353,
+    "groups": 1487,
+    "benign": 2945,
+    "adversarial": 2408
+  },
+  "length_parity": {
+    "benign_median": 250.0,
+    "benign_mean": 223.64448217317488,
+    "benign_sd": 52.87712242232591,
+    "adversarial_median": 250.0,
+    "adversarial_mean": 222.01204318936877,
+    "adversarial_sd": 55.00423062386248,
+    "median_pct_difference": 0.0
+  },
+  "breakdown": {
+    "vector": {
+      "misinformation": 1179,
+      "override": 1229
+    },
+    "category": {
+      "recommendation_alteration": 597,
+      "dosage_manipulation": 607,
+      "allergy_suppression": 637,
+      "contraindication_override": 567
+    },
+    "encoding": {
+      "plaintext": 1799,
+      "leet": 108,
+      "base64": 121,
+      "unicode": 130,
+      "hex": 129,
+      "url": 121
+    }
+  },
+  "generated_at": "2026-09-11 15:44:55 UTC"
+}
