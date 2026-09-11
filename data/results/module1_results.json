@@ -20,11 +20,11 @@
   "results": {
     "plaintext": {
       "n": 446,
-      "detected": 9,
-      "rate": 0.020179372197309416,
-      "ci_low": 0.010651914384202401,
-      "ci_high": 0.03790206550560769,
-      "decode_fidelity": 0.020179372197309416
+      "detected": 0,
+      "rate": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.008539894931904917,
+      "decode_fidelity": 0.0
     },
     "base64": {
       "n": 446,
@@ -68,12 +68,12 @@
     },
     "control_clean": {
       "n": 446,
-      "detected": 9,
-      "rate": 0.020179372197309416,
-      "ci_low": 0.010651914384202401,
-      "ci_high": 0.03790206550560769,
+      "detected": 0,
+      "rate": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.008539894931904917,
       "decode_fidelity": null
     }
   },
-  "generated_at": "2026-09-11 20:25:08 UTC"
+  "generated_at": "2026-09-11 20:42:29 UTC"
 }

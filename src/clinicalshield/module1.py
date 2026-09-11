@@ -15,6 +15,29 @@ LEET_RE = re.compile(r"\b(?=[a-z]*[0-9])(?=[0-9]*[a-z])[a-z0-9]{4,}\b", re.I)
 
 LEET_MAP = {"4": "a", "3": "e", "1": "i", "0": "o", "5": "s", "7": "t"}
 
+# Biomedical identifiers: uppercase stem followed by a digit (CYP3A4, CYP2C19).
+BIOMED_ID_RE = re.compile(r"^[A-Z]{2,}[0-9]")
+
+# Decoding must yield a real word. Common English plus the instruction
+# vocabulary that override payloads are built from.
+LEET_WORDS = set("""
+ignore ignores ignored ignoring instruction instructions previous prior system systems
+override overrides overridden disregard disregarded disregarding admin administrator
+command commands recommend recommends recommended dose doses dosage double triple times
+labeled label suppress suppressed suppressing warning warnings alert alerts
+contraindication contraindications allergy allergies interaction interactions patient
+patients clinical medical safety risk report reports reporting display show hide remove
+delete never always must should shall advise advised advising treatment treat treated
+discontinue withhold monitor monitoring prescribe administer respond reply
+the and for with not you your all any this that these those from into text above below
+new old set reset output input answer response prompt role user assistant context data
+file note before after when where what which while string line word words please make
+made take taken give given tell told write written read reads follow following state
+states stated list lists first last next then than also only just even more most less
+least other another same different high higher low lower safe unsafe good bad best worse
+true false yes not none each both very much many few own same than too can will would
+""".split())
+
 
 def shannon_entropy(s):
     if not s:
@@ -120,24 +143,45 @@ def detect_url(text, min_escapes=4):
              "conf": min(0.5 + 0.1 * len(ms), 0.95)}]
 
 
+def leet_decode_token(tok):
+    d = tok.lower()
+    for k, v in LEET_MAP.items():
+        d = d.replace(k, v)
+    return d
+
+
+def is_leet_token(tok):
+    """A token counts as leetspeak only if decoding turns it into a real word.
+
+    Character-shape heuristics alone are not sufficient. Drug labels are dense
+    with tokens that mix letters and leet-mapped digits -- CYP3A4, CYP1A2,
+    CYP2C19, 5HT3, HbA1c -- and a shape-based rule flags them. Requiring the
+    decoded form to be a known word separates 'ign0r3' -> 'ignore' from
+    'CYP3A4' -> 'cypeaa', which is the distinction that actually matters.
+    """
+    if BIOMED_ID_RE.match(tok):
+        return False
+    letters = sum(1 for c in tok if c.isalpha())
+    if letters < 1:
+        return False
+    if sum(1 for c in tok if c in LEET_MAP) == 0:
+        return False
+    dec = leet_decode_token(tok)
+    return len(dec) >= 4 and dec in LEET_WORDS
+
+
 def detect_leet(text, min_tokens=3):
     """Leetspeak is the hard case and the detector is deliberately conservative.
 
-    '1' for 'i' and '0' for 'o' are visually identical to the digits that occur
+    '1' for 'i' and '0' for 'o' are visually identical to digits that occur
     throughout clinical text in doses and lab values. Raising sensitivity trades
     directly against false positives on legitimate clinical writing, which for a
     CDSS is the worse error.
     """
     cands = []
     for m in LEET_RE.finditer(text):
-        tok = m.group()
-        digits = sum(1 for c in tok if c in LEET_MAP)
-        letters = sum(1 for c in tok if c.isalpha())
-        if digits == 0 or letters < 2:
-            continue
-        if digits / len(tok) > 0.6:
-            continue                       # mostly digits: a dose, not leet
-        cands.append((m.span(), tok))
+        if is_leet_token(m.group()):
+            cands.append((m.span(), m.group()))
     if len(cands) < min_tokens:
         return []
     dec = text
@@ -167,7 +211,7 @@ def module1(text, max_depth=3):
         for name, fn in HARD_DETECTORS.items():
             for h in fn(cur):
                 layer.append((name, h))
-        if not layer:                      # leet is the fallback, not a peer
+        if not layer:                      
             for h in detect_leet(cur):
                 layer.append(("leet", h))
         if not layer:
