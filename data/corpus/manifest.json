@@ -4,7 +4,7 @@
   "config": {
     "CORPUS_TIER": "public",
     "N_PATIENT_CASES": 1000,
-    "N_FDA_LABELS": 600,
+    "N_FDA_LABELS": 3000,
     "MIMIC_NOTE_PATH": "data/raw/mimic-iv-note/discharge.csv",
     "SEED": 42,
     "USE_DRIVE": true,
@@ -24,8 +24,8 @@
     "rag_corpus": {
       "source": "openFDA drug label API",
       "endpoint": "https://api.fda.gov/drug/label.json",
-      "drugs_requested": 49,
-      "drugs_retrieved": 48,
+      "drugs_requested": 400,
+      "drugs_retrieved": 336,
       "drugs_failed": [],
       "sections": [
         "indications_and_usage",
@@ -37,14 +37,1627 @@
         "adverse_reactions",
         "use_in_specific_populations"
       ],
-      "redistributable": true
+      "redistributable": true,
+      "drug_sampling_frame": {
+        "method": "top-N generic names by openFDA label document count",
+        "endpoint_params": {
+          "count": "openfda.generic_name.exact",
+          "limit": 1000
+        },
+        "filters": "single-ingredient only; 4-40 chars; alphabetic",
+        "n_requested": 400,
+        "n_used": 400,
+        "retrieved_at": "2026-09-11 15:11:07 UTC",
+        "drugs": [
+          {
+            "name": "zinc oxide",
+            "label_count": 1956
+          },
+          {
+            "name": "alcohol",
+            "label_count": 1720
+          },
+          {
+            "name": "acetaminophen",
+            "label_count": 1012
+          },
+          {
+            "name": "salicylic acid",
+            "label_count": 993
+          },
+          {
+            "name": "ibuprofen",
+            "label_count": 952
+          },
+          {
+            "name": "menthol",
+            "label_count": 907
+          },
+          {
+            "name": "benzalkonium chloride",
+            "label_count": 820
+          },
+          {
+            "name": "sodium fluoride",
+            "label_count": 799
+          },
+          {
+            "name": "ethyl alcohol",
+            "label_count": 674
+          },
+          {
+            "name": "isopropyl alcohol",
+            "label_count": 530
+          },
+          {
+            "name": "nicotine polacrilex",
+            "label_count": 521
+          },
+          {
+            "name": "lidocaine",
+            "label_count": 489
+          },
+          {
+            "name": "oxygen",
+            "label_count": 460
+          },
+          {
+            "name": "calcium carbonate",
+            "label_count": 432
+          },
+          {
+            "name": "gabapentin",
+            "label_count": 417
+          },
+          {
+            "name": "benzocaine",
+            "label_count": 407
+          },
+          {
+            "name": "hydrocortisone",
+            "label_count": 377
+          },
+          {
+            "name": "aspirin",
+            "label_count": 375
+          },
+          {
+            "name": "loratadine",
+            "label_count": 340
+          },
+          {
+            "name": "diphenhydramine hydrochloride",
+            "label_count": 333
+          },
+          {
+            "name": "diphenhydramine hcl",
+            "label_count": 330
+          },
+          {
+            "name": "pyrithione zinc",
+            "label_count": 314
+          },
+          {
+            "name": "lidocaine hydrochloride",
+            "label_count": 305
+          },
+          {
+            "name": "famotidine",
+            "label_count": 292
+          },
+          {
+            "name": "omeprazole",
+            "label_count": 284
+          },
+          {
+            "name": "guaifenesin",
+            "label_count": 279
+          },
+          {
+            "name": "levothyroxine sodium",
+            "label_count": 279
+          },
+          {
+            "name": "diclofenac sodium",
+            "label_count": 276
+          },
+          {
+            "name": "cetirizine hydrochloride",
+            "label_count": 271
+          },
+          {
+            "name": "metformin hydrochloride",
+            "label_count": 266
+          },
+          {
+            "name": "minoxidil",
+            "label_count": 256
+          },
+          {
+            "name": "naproxen sodium",
+            "label_count": 256
+          },
+          {
+            "name": "prednisone",
+            "label_count": 247
+          },
+          {
+            "name": "atorvastatin calcium",
+            "label_count": 243
+          },
+          {
+            "name": "bupropion hydrochloride",
+            "label_count": 243
+          },
+          {
+            "name": "simethicone",
+            "label_count": 240
+          },
+          {
+            "name": "aluminum chlorohydrate",
+            "label_count": 235
+          },
+          {
+            "name": "pregabalin",
+            "label_count": 227
+          },
+          {
+            "name": "bismuth subsalicylate",
+            "label_count": 223
+          },
+          {
+            "name": "amoxicillin",
+            "label_count": 222
+          },
+          {
+            "name": "aluminum zirconium tetrachlorohydrex gly",
+            "label_count": 216
+          },
+          {
+            "name": "triamcinolone acetonide",
+            "label_count": 213
+          },
+          {
+            "name": "miconazole nitrate",
+            "label_count": 212
+          },
+          {
+            "name": "chloroxylenol",
+            "label_count": 209
+          },
+          {
+            "name": "benzoyl peroxide",
+            "label_count": 203
+          },
+          {
+            "name": "potassium chloride",
+            "label_count": 200
+          },
+          {
+            "name": "docusate sodium",
+            "label_count": 195
+          },
+          {
+            "name": "titanium dioxide",
+            "label_count": 189
+          },
+          {
+            "name": "sodium chloride",
+            "label_count": 179
+          },
+          {
+            "name": "clotrimazole",
+            "label_count": 177
+          },
+          {
+            "name": "acyclovir",
+            "label_count": 176
+          },
+          {
+            "name": "tolnaftate",
+            "label_count": 174
+          },
+          {
+            "name": "cyclobenzaprine hydrochloride",
+            "label_count": 173
+          },
+          {
+            "name": "baclofen",
+            "label_count": 169
+          },
+          {
+            "name": "povidone-iodine",
+            "label_count": 166
+          },
+          {
+            "name": "buspirone hydrochloride",
+            "label_count": 164
+          },
+          {
+            "name": "levetiracetam",
+            "label_count": 163
+          },
+          {
+            "name": "lisinopril",
+            "label_count": 160
+          },
+          {
+            "name": "glycerin",
+            "label_count": 159
+          },
+          {
+            "name": "topiramate",
+            "label_count": 158
+          },
+          {
+            "name": "metoprolol tartrate",
+            "label_count": 157
+          },
+          {
+            "name": "sodium monofluorophosphate",
+            "label_count": 157
+          },
+          {
+            "name": "cephalexin",
+            "label_count": 155
+          },
+          {
+            "name": "oxymetazoline hydrochloride",
+            "label_count": 153
+          },
+          {
+            "name": "esomeprazole magnesium",
+            "label_count": 152
+          },
+          {
+            "name": "furosemide",
+            "label_count": 152
+          },
+          {
+            "name": "metronidazole",
+            "label_count": 150
+          },
+          {
+            "name": "stannous fluoride",
+            "label_count": 150
+          },
+          {
+            "name": "metoprolol succinate",
+            "label_count": 148
+          },
+          {
+            "name": "hydroxyzine hydrochloride",
+            "label_count": 146
+          },
+          {
+            "name": "ketorolac tromethamine",
+            "label_count": 146
+          },
+          {
+            "name": "tadalafil",
+            "label_count": 145
+          },
+          {
+            "name": "hydrochlorothiazide",
+            "label_count": 144
+          },
+          {
+            "name": "methocarbamol",
+            "label_count": 144
+          },
+          {
+            "name": "doxycycline hyclate",
+            "label_count": 143
+          },
+          {
+            "name": "colloidal oatmeal",
+            "label_count": 142
+          },
+          {
+            "name": "propranolol hydrochloride",
+            "label_count": 141
+          },
+          {
+            "name": "celecoxib",
+            "label_count": 139
+          },
+          {
+            "name": "losartan potassium",
+            "label_count": 138
+          },
+          {
+            "name": "sertraline hydrochloride",
+            "label_count": 138
+          },
+          {
+            "name": "fenofibrate",
+            "label_count": 137
+          },
+          {
+            "name": "ondansetron",
+            "label_count": 137
+          },
+          {
+            "name": "petrolatum",
+            "label_count": 137
+          },
+          {
+            "name": "nitrogen",
+            "label_count": 136
+          },
+          {
+            "name": "estradiol",
+            "label_count": 135
+          },
+          {
+            "name": "sildenafil",
+            "label_count": 135
+          },
+          {
+            "name": "dimethicone",
+            "label_count": 134
+          },
+          {
+            "name": "fluticasone propionate",
+            "label_count": 134
+          },
+          {
+            "name": "allopurinol",
+            "label_count": 133
+          },
+          {
+            "name": "rosuvastatin calcium",
+            "label_count": 132
+          },
+          {
+            "name": "spironolactone",
+            "label_count": 132
+          },
+          {
+            "name": "divalproex sodium",
+            "label_count": 131
+          },
+          {
+            "name": "hydrogen peroxide",
+            "label_count": 131
+          },
+          {
+            "name": "naproxen",
+            "label_count": 131
+          },
+          {
+            "name": "venlafaxine hydrochloride",
+            "label_count": 130
+          },
+          {
+            "name": "amlodipine besylate",
+            "label_count": 129
+          },
+          {
+            "name": "loperamide hydrochloride",
+            "label_count": 124
+          },
+          {
+            "name": "meloxicam",
+            "label_count": 123
+          },
+          {
+            "name": "pravastatin sodium",
+            "label_count": 123
+          },
+          {
+            "name": "white petrolatum",
+            "label_count": 119
+          },
+          {
+            "name": "alcohol antiseptic",
+            "label_count": 118
+          },
+          {
+            "name": "dicyclomine hydrochloride",
+            "label_count": 118
+          },
+          {
+            "name": "aripiprazole",
+            "label_count": 117
+          },
+          {
+            "name": "zolpidem tartrate",
+            "label_count": 117
+          },
+          {
+            "name": "fexofenadine hydrochloride",
+            "label_count": 114
+          },
+          {
+            "name": "glycopyrrolate",
+            "label_count": 114
+          },
+          {
+            "name": "sennosides",
+            "label_count": 114
+          },
+          {
+            "name": "amitriptyline hydrochloride",
+            "label_count": 113
+          },
+          {
+            "name": "bisacodyl",
+            "label_count": 113
+          },
+          {
+            "name": "clonidine hydrochloride",
+            "label_count": 113
+          },
+          {
+            "name": "diltiazem hydrochloride",
+            "label_count": 113
+          },
+          {
+            "name": "benzonatate",
+            "label_count": 112
+          },
+          {
+            "name": "carvedilol",
+            "label_count": 111
+          },
+          {
+            "name": "simvastatin",
+            "label_count": 111
+          },
+          {
+            "name": "phentermine hydrochloride",
+            "label_count": 110
+          },
+          {
+            "name": "phenylephrine hydrochloride",
+            "label_count": 110
+          },
+          {
+            "name": "capsaicin",
+            "label_count": 108
+          },
+          {
+            "name": "glipizide",
+            "label_count": 107
+          },
+          {
+            "name": "albuterol sulfate",
+            "label_count": 105
+          },
+          {
+            "name": "lansoprazole",
+            "label_count": 104
+          },
+          {
+            "name": "lorazepam",
+            "label_count": 104
+          },
+          {
+            "name": "trazodone hydrochloride",
+            "label_count": 104
+          },
+          {
+            "name": "lamotrigine",
+            "label_count": 103
+          },
+          {
+            "name": "azithromycin",
+            "label_count": 102
+          },
+          {
+            "name": "fluconazole",
+            "label_count": 102
+          },
+          {
+            "name": "olanzapine",
+            "label_count": 102
+          },
+          {
+            "name": "fluoxetine hydrochloride",
+            "label_count": 100
+          },
+          {
+            "name": "cetirizine hcl",
+            "label_count": 99
+          },
+          {
+            "name": "doxycycline",
+            "label_count": 99
+          },
+          {
+            "name": "quetiapine fumarate",
+            "label_count": 97
+          },
+          {
+            "name": "atenolol",
+            "label_count": 96
+          },
+          {
+            "name": "clobetasol propionate",
+            "label_count": 96
+          },
+          {
+            "name": "clonazepam",
+            "label_count": 96
+          },
+          {
+            "name": "promethazine hydrochloride",
+            "label_count": 96
+          },
+          {
+            "name": "hydralazine hydrochloride",
+            "label_count": 95
+          },
+          {
+            "name": "mirtazapine",
+            "label_count": 94
+          },
+          {
+            "name": "verapamil hydrochloride",
+            "label_count": 94
+          },
+          {
+            "name": "cetylpyridinium chloride",
+            "label_count": 93
+          },
+          {
+            "name": "tramadol hydrochloride",
+            "label_count": 93
+          },
+          {
+            "name": "carbamazepine",
+            "label_count": 91
+          },
+          {
+            "name": "pantoprazole sodium",
+            "label_count": 91
+          },
+          {
+            "name": "arnica montana",
+            "label_count": 90
+          },
+          {
+            "name": "doxepin hydrochloride",
+            "label_count": 90
+          },
+          {
+            "name": "nifedipine",
+            "label_count": 89
+          },
+          {
+            "name": "witch hazel",
+            "label_count": 89
+          },
+          {
+            "name": "diazepam",
+            "label_count": 88
+          },
+          {
+            "name": "magnesium hydroxide",
+            "label_count": 88
+          },
+          {
+            "name": "sodium bicarbonate",
+            "label_count": 88
+          },
+          {
+            "name": "sulfur",
+            "label_count": 88
+          },
+          {
+            "name": "tizanidine",
+            "label_count": 88
+          },
+          {
+            "name": "dexamethasone",
+            "label_count": 86
+          },
+          {
+            "name": "duloxetine",
+            "label_count": 86
+          },
+          {
+            "name": "labetalol hydrochloride",
+            "label_count": 83
+          },
+          {
+            "name": "nystatin",
+            "label_count": 83
+          },
+          {
+            "name": "ondansetron hydrochloride",
+            "label_count": 83
+          },
+          {
+            "name": "phenazopyridine hydrochloride",
+            "label_count": 83
+          },
+          {
+            "name": "epinephrine",
+            "label_count": 81
+          },
+          {
+            "name": "chlorthalidone",
+            "label_count": 79
+          },
+          {
+            "name": "clindamycin phosphate",
+            "label_count": 79
+          },
+          {
+            "name": "escitalopram",
+            "label_count": 79
+          },
+          {
+            "name": "chlorhexidine gluconate",
+            "label_count": 78
+          },
+          {
+            "name": "indomethacin",
+            "label_count": 78
+          },
+          {
+            "name": "levofloxacin",
+            "label_count": 78
+          },
+          {
+            "name": "oxybutynin chloride",
+            "label_count": 78
+          },
+          {
+            "name": "vancomycin hydrochloride",
+            "label_count": 78
+          },
+          {
+            "name": "ciprofloxacin",
+            "label_count": 77
+          },
+          {
+            "name": "clindamycin hydrochloride",
+            "label_count": 77
+          },
+          {
+            "name": "lidocaine hcl",
+            "label_count": 77
+          },
+          {
+            "name": "methylphenidate hydrochloride",
+            "label_count": 77
+          },
+          {
+            "name": "alprazolam",
+            "label_count": 76
+          },
+          {
+            "name": "haloperidol",
+            "label_count": 76
+          },
+          {
+            "name": "levocetirizine dihydrochloride",
+            "label_count": 76
+          },
+          {
+            "name": "etodolac",
+            "label_count": 75
+          },
+          {
+            "name": "finasteride",
+            "label_count": 75
+          },
+          {
+            "name": "lacosamide",
+            "label_count": 75
+          },
+          {
+            "name": "naloxone hydrochloride",
+            "label_count": 75
+          },
+          {
+            "name": "risperidone",
+            "label_count": 75
+          },
+          {
+            "name": "sunscreen",
+            "label_count": 75
+          },
+          {
+            "name": "bumetanide",
+            "label_count": 74
+          },
+          {
+            "name": "oxcarbazepine",
+            "label_count": 74
+          },
+          {
+            "name": "glimepiride",
+            "label_count": 73
+          },
+          {
+            "name": "meclizine hydrochloride",
+            "label_count": 73
+          },
+          {
+            "name": "morphine sulfate",
+            "label_count": 73
+          },
+          {
+            "name": "olmesartan medoxomil",
+            "label_count": 73
+          },
+          {
+            "name": "docosanol",
+            "label_count": 72
+          },
+          {
+            "name": "fexofenadine hcl",
+            "label_count": 72
+          },
+          {
+            "name": "dexamethasone sodium phosphate",
+            "label_count": 71
+          },
+          {
+            "name": "minocycline hydrochloride",
+            "label_count": 71
+          },
+          {
+            "name": "progesterone",
+            "label_count": 71
+          },
+          {
+            "name": "aluminum zirconium trichlorohydrex gly",
+            "label_count": 70
+          },
+          {
+            "name": "benzethonium chloride",
+            "label_count": 70
+          },
+          {
+            "name": "cefdinir",
+            "label_count": 70
+          },
+          {
+            "name": "hydroxyzine pamoate",
+            "label_count": 70
+          },
+          {
+            "name": "oseltamivir phosphate",
+            "label_count": 70
+          },
+          {
+            "name": "oxycodone hydrochloride",
+            "label_count": 70
+          },
+          {
+            "name": "aluminum sesquichlorohydrate",
+            "label_count": 69
+          },
+          {
+            "name": "olopatadine hydrochloride",
+            "label_count": 69
+          },
+          {
+            "name": "fluoxetine",
+            "label_count": 68
+          },
+          {
+            "name": "enalapril maleate",
+            "label_count": 67
+          },
+          {
+            "name": "nitroglycerin",
+            "label_count": 67
+          },
+          {
+            "name": "prazosin hydrochloride",
+            "label_count": 67
+          },
+          {
+            "name": "ciprofloxacin hydrochloride",
+            "label_count": 65
+          },
+          {
+            "name": "mesalamine",
+            "label_count": 65
+          },
+          {
+            "name": "loperamide hcl",
+            "label_count": 64
+          },
+          {
+            "name": "phenobarbital",
+            "label_count": 64
+          },
+          {
+            "name": "valsartan",
+            "label_count": 64
+          },
+          {
+            "name": "folic acid",
+            "label_count": 63
+          },
+          {
+            "name": "sucralfate",
+            "label_count": 63
+          },
+          {
+            "name": "tamsulosin hydrochloride",
+            "label_count": 63
+          },
+          {
+            "name": "eszopiclone",
+            "label_count": 62
+          },
+          {
+            "name": "terbinafine hydrochloride",
+            "label_count": 62
+          },
+          {
+            "name": "ketoconazole",
+            "label_count": 61
+          },
+          {
+            "name": "water",
+            "label_count": 61
+          },
+          {
+            "name": "memantine hydrochloride",
+            "label_count": 60
+          },
+          {
+            "name": "penicillin v potassium",
+            "label_count": 60
+          },
+          {
+            "name": "dextromethorphan polistirex",
+            "label_count": 59
+          },
+          {
+            "name": "metaxalone",
+            "label_count": 59
+          },
+          {
+            "name": "nicotine",
+            "label_count": 59
+          },
+          {
+            "name": "tretinoin",
+            "label_count": 59
+          },
+          {
+            "name": "carbamide peroxide",
+            "label_count": 58
+          },
+          {
+            "name": "heparin sodium",
+            "label_count": 58
+          },
+          {
+            "name": "levonorgestrel",
+            "label_count": 57
+          },
+          {
+            "name": "magnesium sulfate",
+            "label_count": 57
+          },
+          {
+            "name": "ofloxacin",
+            "label_count": 57
+          },
+          {
+            "name": "allantoin",
+            "label_count": 56
+          },
+          {
+            "name": "benazepril hydrochloride",
+            "label_count": 56
+          },
+          {
+            "name": "betamethasone dipropionate",
+            "label_count": 56
+          },
+          {
+            "name": "erythromycin",
+            "label_count": 56
+          },
+          {
+            "name": "lovastatin",
+            "label_count": 56
+          },
+          {
+            "name": "magnesium citrate",
+            "label_count": 56
+          },
+          {
+            "name": "atropine sulfate",
+            "label_count": 55
+          },
+          {
+            "name": "lithium carbonate",
+            "label_count": 55
+          },
+          {
+            "name": "nortriptyline hydrochloride",
+            "label_count": 55
+          },
+          {
+            "name": "temazepam",
+            "label_count": 55
+          },
+          {
+            "name": "aconitum napellus",
+            "label_count": 54
+          },
+          {
+            "name": "tobramycin",
+            "label_count": 54
+          },
+          {
+            "name": "undecylenic acid",
+            "label_count": 54
+          },
+          {
+            "name": "zinc oxide sunscreen",
+            "label_count": 54
+          },
+          {
+            "name": "carboxymethylcellulose sodium",
+            "label_count": 53
+          },
+          {
+            "name": "diclofenac potassium",
+            "label_count": 53
+          },
+          {
+            "name": "metoclopramide",
+            "label_count": 53
+          },
+          {
+            "name": "acetazolamide",
+            "label_count": 52
+          },
+          {
+            "name": "adenosine",
+            "label_count": 52
+          },
+          {
+            "name": "aluminum zirconium octachlorohydrex gly",
+            "label_count": 52
+          },
+          {
+            "name": "bacitracin zinc",
+            "label_count": 52
+          },
+          {
+            "name": "budesonide",
+            "label_count": 52
+          },
+          {
+            "name": "colchicine",
+            "label_count": 52
+          },
+          {
+            "name": "donepezil hydrochloride",
+            "label_count": 52
+          },
+          {
+            "name": "guanfacine",
+            "label_count": 52
+          },
+          {
+            "name": "midodrine hydrochloride",
+            "label_count": 52
+          },
+          {
+            "name": "azithromycin dihydrate",
+            "label_count": 51
+          },
+          {
+            "name": "citalopram",
+            "label_count": 51
+          },
+          {
+            "name": "doxylamine succinate",
+            "label_count": 51
+          },
+          {
+            "name": "quetiapine",
+            "label_count": 51
+          },
+          {
+            "name": "venlafaxine",
+            "label_count": 51
+          },
+          {
+            "name": "montelukast sodium",
+            "label_count": 50
+          },
+          {
+            "name": "nabumetone",
+            "label_count": 50
+          },
+          {
+            "name": "octinoxate",
+            "label_count": 50
+          },
+          {
+            "name": "phenol",
+            "label_count": 50
+          },
+          {
+            "name": "adapalene",
+            "label_count": 49
+          },
+          {
+            "name": "amiodarone hydrochloride",
+            "label_count": 49
+          },
+          {
+            "name": "doxazosin",
+            "label_count": 49
+          },
+          {
+            "name": "hydroxychloroquine sulfate",
+            "label_count": 49
+          },
+          {
+            "name": "caffeine",
+            "label_count": 48
+          },
+          {
+            "name": "carisoprodol",
+            "label_count": 48
+          },
+          {
+            "name": "hyoscyamine sulfate",
+            "label_count": 48
+          },
+          {
+            "name": "mycophenolate mofetil",
+            "label_count": 48
+          },
+          {
+            "name": "tranexamic acid",
+            "label_count": 48
+          },
+          {
+            "name": "bupivacaine hydrochloride",
+            "label_count": 47
+          },
+          {
+            "name": "sotalol hydrochloride",
+            "label_count": 47
+          },
+          {
+            "name": "valacyclovir",
+            "label_count": 47
+          },
+          {
+            "name": "warfarin sodium",
+            "label_count": 47
+          },
+          {
+            "name": "alcohol hand sanitizer",
+            "label_count": 46
+          },
+          {
+            "name": "daptomycin",
+            "label_count": 46
+          },
+          {
+            "name": "fluocinonide",
+            "label_count": 46
+          },
+          {
+            "name": "methyl salicylate",
+            "label_count": 46
+          },
+          {
+            "name": "paroxetine",
+            "label_count": 46
+          },
+          {
+            "name": "rocuronium bromide",
+            "label_count": 46
+          },
+          {
+            "name": "ropinirole",
+            "label_count": 46
+          },
+          {
+            "name": "sumatriptan succinate",
+            "label_count": 46
+          },
+          {
+            "name": "naltrexone hydrochloride",
+            "label_count": 45
+          },
+          {
+            "name": "irbesartan",
+            "label_count": 44
+          },
+          {
+            "name": "mometasone furoate",
+            "label_count": 44
+          },
+          {
+            "name": "pseudoephedrine hydrochloride",
+            "label_count": 44
+          },
+          {
+            "name": "tacrolimus",
+            "label_count": 44
+          },
+          {
+            "name": "valacyclovir hydrochloride",
+            "label_count": 44
+          },
+          {
+            "name": "digoxin",
+            "label_count": 43
+          },
+          {
+            "name": "gemfibrozil",
+            "label_count": 43
+          },
+          {
+            "name": "hydrocortisone acetate",
+            "label_count": 43
+          },
+          {
+            "name": "nitrous oxide",
+            "label_count": 43
+          },
+          {
+            "name": "prochlorperazine maleate",
+            "label_count": 43
+          },
+          {
+            "name": "rizatriptan benzoate",
+            "label_count": 43
+          },
+          {
+            "name": "selenium sulfide",
+            "label_count": 43
+          },
+          {
+            "name": "amantadine hydrochloride",
+            "label_count": 42
+          },
+          {
+            "name": "atomoxetine",
+            "label_count": 42
+          },
+          {
+            "name": "clarithromycin",
+            "label_count": 42
+          },
+          {
+            "name": "clopidogrel bisulfate",
+            "label_count": 42
+          },
+          {
+            "name": "desmopressin acetate",
+            "label_count": 42
+          },
+          {
+            "name": "fluocinolone acetonide",
+            "label_count": 42
+          },
+          {
+            "name": "rosuvastatin",
+            "label_count": 42
+          },
+          {
+            "name": "telmisartan",
+            "label_count": 42
+          },
+          {
+            "name": "testosterone cypionate",
+            "label_count": 42
+          },
+          {
+            "name": "citalopram hydrobromide",
+            "label_count": 41
+          },
+          {
+            "name": "ezetimibe",
+            "label_count": 41
+          },
+          {
+            "name": "lurasidone hydrochloride",
+            "label_count": 41
+          },
+          {
+            "name": "methotrexate",
+            "label_count": 41
+          },
+          {
+            "name": "mineral oil",
+            "label_count": 41
+          },
+          {
+            "name": "pseudoephedrine hcl",
+            "label_count": 41
+          },
+          {
+            "name": "ramelteon",
+            "label_count": 41
+          },
+          {
+            "name": "sevelamer carbonate",
+            "label_count": 41
+          },
+          {
+            "name": "sumatriptan",
+            "label_count": 41
+          },
+          {
+            "name": "dexmethylphenidate hydrochloride",
+            "label_count": 40
+          },
+          {
+            "name": "fluorouracil",
+            "label_count": 40
+          },
+          {
+            "name": "pantoprazole",
+            "label_count": 40
+          },
+          {
+            "name": "ursodiol",
+            "label_count": 40
+          },
+          {
+            "name": "voriconazole",
+            "label_count": 40
+          },
+          {
+            "name": "chlorpromazine hydrochloride",
+            "label_count": 39
+          },
+          {
+            "name": "esomeprazole",
+            "label_count": 39
+          },
+          {
+            "name": "meclizine hcl",
+            "label_count": 39
+          },
+          {
+            "name": "methimazole",
+            "label_count": 39
+          },
+          {
+            "name": "oatmeal",
+            "label_count": 39
+          },
+          {
+            "name": "ramipril",
+            "label_count": 39
+          },
+          {
+            "name": "duloxetine hydrochloride",
+            "label_count": 38
+          },
+          {
+            "name": "ephedrine sulfate",
+            "label_count": 38
+          },
+          {
+            "name": "isosorbide mononitrate",
+            "label_count": 38
+          },
+          {
+            "name": "methylprednisolone",
+            "label_count": 38
+          },
+          {
+            "name": "mupirocin",
+            "label_count": 38
+          },
+          {
+            "name": "arsenic trioxide",
+            "label_count": 37
+          },
+          {
+            "name": "carbon dioxide",
+            "label_count": 37
+          },
+          {
+            "name": "cyanocobalamin",
+            "label_count": 37
+          },
+          {
+            "name": "glyburide",
+            "label_count": 37
+          },
+          {
+            "name": "perphenazine",
+            "label_count": 37
+          },
+          {
+            "name": "succinylcholine chloride",
+            "label_count": 37
+          },
+          {
+            "name": "antacid tablets",
+            "label_count": 36
+          },
+          {
+            "name": "candida albicans",
+            "label_count": 36
+          },
+          {
+            "name": "cefadroxil",
+            "label_count": 36
+          },
+          {
+            "name": "dapsone",
+            "label_count": 36
+          },
+          {
+            "name": "ivermectin",
+            "label_count": 36
+          },
+          {
+            "name": "linezolid",
+            "label_count": 36
+          },
+          {
+            "name": "magnesium sulfate heptahydrate",
+            "label_count": 36
+          },
+          {
+            "name": "medroxyprogesterone acetate",
+            "label_count": 36
+          },
+          {
+            "name": "nebivolol",
+            "label_count": 36
+          },
+          {
+            "name": "pramipexole dihydrochloride",
+            "label_count": 36
+          },
+          {
+            "name": "psyllium husk",
+            "label_count": 36
+          },
+          {
+            "name": "rabeprazole sodium",
+            "label_count": 36
+          },
+          {
+            "name": "testosterone",
+            "label_count": 36
+          },
+          {
+            "name": "ticagrelor",
+            "label_count": 36
+          },
+          {
+            "name": "calcium polycarbophil",
+            "label_count": 35
+          },
+          {
+            "name": "camphor",
+            "label_count": 35
+          },
+          {
+            "name": "chlorpheniramine maleate",
+            "label_count": 35
+          },
+          {
+            "name": "cyproheptadine hydrochloride",
+            "label_count": 35
+          },
+          {
+            "name": "desoximetasone",
+            "label_count": 35
+          },
+          {
+            "name": "dextromethorphan hbr",
+            "label_count": 35
+          },
+          {
+            "name": "fluphenazine hydrochloride",
+            "label_count": 35
+          },
+          {
+            "name": "methadone hydrochloride",
+            "label_count": 35
+          },
+          {
+            "name": "methocarbamol tablets",
+            "label_count": 35
+          },
+          {
+            "name": "modafinil",
+            "label_count": 35
+          },
+          {
+            "name": "pirfenidone",
+            "label_count": 35
+          },
+          {
+            "name": "anastrozole",
+            "label_count": 34
+          },
+          {
+            "name": "benztropine mesylate",
+            "label_count": 34
+          },
+          {
+            "name": "dextrose monohydrate",
+            "label_count": 34
+          },
+          {
+            "name": "ipratropium bromide",
+            "label_count": 34
+          },
+          {
+            "name": "zoledronic acid",
+            "label_count": 34
+          },
+          {
+            "name": "zonisamide",
+            "label_count": 34
+          },
+          {
+            "name": "bacitracin",
+            "label_count": 33
+          },
+          {
+            "name": "coal tar",
+            "label_count": 33
+          },
+          {
+            "name": "escitalopram oxalate",
+            "label_count": 33
+          },
+          {
+            "name": "nicardipine hydrochloride",
+            "label_count": 33
+          },
+          {
+            "name": "phytonadione",
+            "label_count": 33
+          },
+          {
+            "name": "solifenacin succinate",
+            "label_count": 33
+          },
+          {
+            "name": "terazosin hydrochloride",
+            "label_count": 33
+          },
+          {
+            "name": "cefuroxime axetil",
+            "label_count": 32
+          },
+          {
+            "name": "gentamicin sulfate",
+            "label_count": 32
+          },
+          {
+            "name": "nitrofurantoin",
+            "label_count": 32
+          },
+          {
+            "name": "posaconazole",
+            "label_count": 32
+          },
+          {
+            "name": "ranolazine",
+            "label_count": 32
+          },
+          {
+            "name": "sildenafil citrate",
+            "label_count": 32
+          },
+          {
+            "name": "tizanidine hydrochloride",
+            "label_count": 32
+          },
+          {
+            "name": "torsemide",
+            "label_count": 32
+          },
+          {
+            "name": "bisoprolol fumarate",
+            "label_count": 31
+          },
+          {
+            "name": "buprenorphine",
+            "label_count": 31
+          },
+          {
+            "name": "deferasirox",
+            "label_count": 31
+          },
+          {
+            "name": "dimenhydrinate",
+            "label_count": 31
+          },
+          {
+            "name": "hydromorphone hydrochloride",
+            "label_count": 31
+          },
+          {
+            "name": "neostigmine methylsulfate",
+            "label_count": 31
+          },
+          {
+            "name": "olopatadine hydrochloride ophthalmic",
+            "label_count": 31
+          },
+          {
+            "name": "phenytoin sodium",
+            "label_count": 31
+          },
+          {
+            "name": "pioglitazone",
+            "label_count": 31
+          },
+          {
+            "name": "timolol maleate",
+            "label_count": 31
+          },
+          {
+            "name": "abrotanum",
+            "label_count": 30
+          },
+          {
+            "name": "bortezomib",
+            "label_count": 30
+          },
+          {
+            "name": "cyclophosphamide",
+            "label_count": 30
+          },
+          {
+            "name": "doxorubicin hydrochloride",
+            "label_count": 30
+          },
+          {
+            "name": "metolazone",
+            "label_count": 30
+          },
+          {
+            "name": "midazolam hydrochloride",
+            "label_count": 30
+          },
+          {
+            "name": "potassium citrate",
+            "label_count": 30
+          },
+          {
+            "name": "agaricus muscarius",
+            "label_count": 29
+          },
+          {
+            "name": "antibacterial hand wipe",
+            "label_count": 29
+          },
+          {
+            "name": "enoxaparin sodium",
+            "label_count": 29
+          },
+          {
+            "name": "felodipine",
+            "label_count": 29
+          }
+        ]
+      }
     }
   },
   "counts": {
     "patient_cases": 1000,
-    "rag_documents": 321,
+    "rag_documents": 1604,
     "patient_groups": 1000,
-    "rag_groups": 321
+    "rag_groups": 1604
   },
   "files": {
     "patient_cases.jsonl": {
@@ -52,8 +1665,8 @@
       "sha256_16": "8bbea737e52f0f96"
     },
     "rag_corpus.jsonl": {
-      "rows": 321,
-      "sha256_16": "96ab204778088d5b"
+      "rows": 1604,
+      "sha256_16": "cbd62de16bd85649"
     }
   }
 }

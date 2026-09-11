@@ -14,26 +14,26 @@
   },
   "rag_corpus": {
     "name": "RAG corpus",
-    "n": 321,
-    "mean": 938.2866043613707,
-    "std": 984.1907908904229,
-    "min": 42,
+    "n": 1604,
+    "mean": 651.7493765586034,
+    "std": 791.4297745603893,
+    "min": 40,
     "max": 6045,
-    "p05": 69.0,
-    "p25": 219.0,
-    "median": 641.0,
-    "p75": 1266.0,
-    "p95": 2949.0
+    "p05": 53.0,
+    "p25": 134.75,
+    "median": 367.0,
+    "p75": 871.0,
+    "p95": 2158.649999999999
   },
   "length_matching_target": {
     "note": "NB02 must draw injected-document lengths from this distribution",
     "source": "rag_corpus",
     "percentiles": {
-      "p05": 69.0,
-      "p25": 219.0,
-      "median": 641.0,
-      "p75": 1266.0,
-      "p95": 2949.0
+      "p05": 53.0,
+      "p25": 134.75,
+      "median": 367.0,
+      "p75": 871.0,
+      "p95": 2158.649999999999
     }
   }
 }
