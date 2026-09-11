@@ -1,0 +1,74 @@
+{
+  "notebook": "03_leakage_safe_split",
+  "seed": 42,
+  "method": "StratifiedGroupKFold on group_id (one group = one source document)",
+  "ratios": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "partitions": {
+    "train": {
+      "chunks": 3787,
+      "groups": 1024,
+      "adversarial": 1710,
+      "benign": 2077,
+      "adversarial_pct": 45.15447583839451
+    },
+    "val": {
+      "chunks": 759,
+      "groups": 228,
+      "adversarial": 337,
+      "benign": 422,
+      "adversarial_pct": 44.400527009222664
+    },
+    "test": {
+      "chunks": 807,
+      "groups": 235,
+      "adversarial": 361,
+      "benign": 446,
+      "adversarial_pct": 44.73358116480793
+    }
+  },
+  "leakage_checks": {
+    "groups_spanning_partitions": 0,
+    "documents_spanning_partitions": 0,
+    "all_chunks_assigned": true
+  },
+  "confound_probes": {
+    "length_only_v2": {
+      "auc": 0.4862489596660993,
+      "accuracy": 0.5526641883519207,
+      "majority_baseline": 0.5526641883519207,
+      "n_test": 807
+    },
+    "length_only_v1_counterfactual": {
+      "auc": 1.0,
+      "accuracy": 1.0,
+      "majority_baseline": 0.5,
+      "n_test": 1000
+    },
+    "verdict": "PASS"
+  },
+  "test_coverage": {
+    "vector": {
+      "override": 182,
+      "misinformation": 179
+    },
+    "category": {
+      "recommendation_alteration": 90,
+      "dosage_manipulation": 96,
+      "allergy_suppression": 86,
+      "contraindication_override": 89
+    },
+    "encoding": {
+      "plaintext": 268,
+      "base64": 23,
+      "unicode": 15,
+      "url": 20,
+      "hex": 19,
+      "leet": 16
+    }
+  },
+  "generated_at": "2026-09-11 20:03:16 UTC"
+}
