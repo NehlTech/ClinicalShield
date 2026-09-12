@@ -19,7 +19,8 @@ LEET_MAP = {"4": "a", "3": "e", "1": "i", "0": "o", "5": "s", "7": "t"}
 # Biomedical identifiers: uppercase stem followed by a digit (CYP3A4, CYP2C19).
 BIOMED_ID_RE = re.compile(r"^[A-Z]{2,}[0-9]")
 
-
+# Decoding must yield a real word. Common English plus the instruction
+# vocabulary that override payloads are built from.
 LEET_WORDS = set("""
 ignore ignores ignored ignoring instruction instructions previous prior system systems
 override overrides overridden disregard disregarded disregarding admin administrator
