@@ -11,6 +11,11 @@
       "override": 0.5,
       "misinformation": 0.5
     },
+    "SPLIT": {
+      "train": 0.7,
+      "val": 0.15,
+      "test": 0.15
+    },
     "ENCODINGS": [
       "plaintext",
       "base64",
@@ -46,23 +51,23 @@
   },
   "breakdown": {
     "vector": {
-      "misinformation": 1179,
-      "override": 1229
+      "misinformation": 1204,
+      "override": 1204
     },
     "category": {
-      "recommendation_alteration": 597,
-      "dosage_manipulation": 607,
-      "allergy_suppression": 637,
-      "contraindication_override": 567
+      "recommendation_alteration": 576,
+      "dosage_manipulation": 606,
+      "contraindication_override": 611,
+      "allergy_suppression": 615
     },
     "encoding": {
-      "plaintext": 1799,
-      "leet": 108,
-      "base64": 121,
-      "unicode": 130,
-      "hex": 129,
-      "url": 121
+      "plaintext": 1766,
+      "hex": 125,
+      "unicode": 135,
+      "base64": 126,
+      "url": 138,
+      "leet": 118
     }
   },
-  "generated_at": "2026-09-11 15:44:55 UTC"
+  "generated_at": "2026-09-12 07:18:46 UTC"
 }
