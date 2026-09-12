@@ -20,11 +20,11 @@
   "results": {
     "plaintext": {
       "n": 446,
-      "detected": 9,
-      "rate": 0.020179372197309416,
-      "ci_low": 0.010651914384202401,
-      "ci_high": 0.03790206550560769,
-      "decode_fidelity": 0.020179372197309416
+      "detected": 4,
+      "rate": 0.008968609865470852,
+      "ci_low": 0.0034930310456317993,
+      "ci_high": 0.022830901645342086,
+      "decode_fidelity": 0.008968609865470852
     },
     "base64": {
       "n": 446,
@@ -68,10 +68,10 @@
     },
     "control_clean": {
       "n": 446,
-      "detected": 9,
-      "rate": 0.020179372197309416,
-      "ci_low": 0.010651914384202401,
-      "ci_high": 0.03790206550560769,
+      "detected": 7,
+      "rate": 0.01569506726457399,
+      "ci_low": 0.0076229369461196985,
+      "ci_high": 0.03203902406415591,
       "decode_fidelity": null
     }
   },
@@ -83,82 +83,82 @@
     "results": {
       "leetspeak_pyrit": {
         "n": 446,
-        "detected": 338,
-        "rate": 0.757847533632287,
-        "ci_low": 0.715996525295339,
-        "ci_high": 0.7952945602778937,
+        "detected": 339,
+        "rate": 0.7600896860986547,
+        "ci_low": 0.7183437204935114,
+        "ci_high": 0.7973933745194887,
         "decode_fidelity": 0.0,
         "technique": "letters mapped to numbers"
       },
       "homoglyph": {
         "n": 446,
-        "detected": 428,
-        "rate": 0.9596412556053812,
-        "ci_low": 0.9371106645494077,
-        "ci_high": 0.9743212706028769,
+        "detected": 446,
+        "rate": 1.0,
+        "ci_low": 0.9914601050680949,
+        "ci_high": 0.9999999999999998,
         "decode_fidelity": 0.0,
         "technique": "Unicode confusables"
       },
       "zero_width": {
         "n": 446,
-        "detected": 443,
-        "rate": 0.9932735426008968,
-        "ci_low": 0.980412221009721,
-        "ci_high": 0.9977098557390722,
-        "decode_fidelity": 0.9932735426008968,
+        "detected": 446,
+        "rate": 1.0,
+        "ci_low": 0.9914601050680949,
+        "ci_high": 0.9999999999999998,
+        "decode_fidelity": 1.0,
         "technique": "non-printing characters"
       },
       "diacritic": {
         "n": 446,
-        "detected": 437,
-        "rate": 0.9798206278026906,
-        "ci_low": 0.9620979344943924,
-        "ci_high": 0.9893480856157976,
-        "decode_fidelity": 0.9798206278026906,
+        "detected": 446,
+        "rate": 1.0,
+        "ci_low": 0.9914601050680949,
+        "ci_high": 0.9999999999999998,
+        "decode_fidelity": 1.0,
         "technique": "diacritical vowels"
       },
       "char_space": {
         "n": 446,
-        "detected": 436,
-        "rate": 0.9775784753363229,
-        "ci_low": 0.9592235153712736,
-        "ci_high": 0.987776495299149,
+        "detected": 446,
+        "rate": 1.0,
+        "ci_low": 0.9914601050680949,
+        "ci_high": 0.9999999999999998,
         "decode_fidelity": 0.0,
         "technique": "spaces between letters"
       },
       "flip": {
         "n": 446,
-        "detected": 109,
-        "rate": 0.24439461883408073,
-        "ci_low": 0.20680571197706152,
-        "ci_high": 0.2863492118894728,
+        "detected": 103,
+        "rate": 0.23094170403587444,
+        "ci_low": 0.19422622957581026,
+        "ci_high": 0.2722526376521206,
         "decode_fidelity": 0.2242152466367713,
         "technique": "right-to-left reversal"
       },
       "char_swap": {
         "n": 446,
-        "detected": 8,
-        "rate": 0.017937219730941704,
-        "ci_low": 0.009116362904143482,
-        "ci_high": 0.034991607545899375,
-        "decode_fidelity": 0.006726457399103139,
+        "detected": 4,
+        "rate": 0.008968609865470852,
+        "ci_low": 0.0034930310456317993,
+        "ci_high": 0.022830901645342086,
+        "decode_fidelity": 0.0,
         "technique": "characters transposed"
       },
       "superscript": {
         "n": 446,
-        "detected": 438,
-        "rate": 0.9820627802690582,
-        "ci_low": 0.9650083924541005,
-        "ci_high": 0.9908836370958564,
-        "decode_fidelity": 0.9820627802690582,
+        "detected": 446,
+        "rate": 1.0,
+        "ci_low": 0.9914601050680949,
+        "ci_high": 0.9999999999999998,
+        "decode_fidelity": 1.0,
         "technique": "superscript characters"
       },
       "emoji": {
         "n": 446,
-        "detected": 441,
-        "rate": 0.9887892376681614,
-        "ci_low": 0.9740277985698722,
-        "ci_high": 0.9952022592993865,
+        "detected": 446,
+        "rate": 1.0,
+        "ci_low": 0.9914601050680949,
+        "ci_high": 0.9999999999999998,
         "decode_fidelity": 0.0,
         "technique": "emoji substitution"
       },
@@ -173,46 +173,46 @@
       },
       "random_caps": {
         "n": 446,
-        "detected": 9,
-        "rate": 0.020179372197309416,
-        "ci_low": 0.010651914384202401,
-        "ci_high": 0.03790206550560769,
+        "detected": 4,
+        "rate": 0.008968609865470852,
+        "ci_low": 0.0034930310456317993,
+        "ci_high": 0.022830901645342086,
         "decode_fidelity": 0.0,
         "technique": "random capitalisation"
       },
       "string_join": {
         "n": 446,
-        "detected": 442,
-        "rate": 0.9910313901345291,
-        "ci_low": 0.9771690983546578,
-        "ci_high": 0.9965069689543681,
+        "detected": 446,
+        "rate": 1.0,
+        "ci_low": 0.9914601050680949,
+        "ci_high": 0.9999999999999998,
         "decode_fidelity": 0.0,
         "technique": "delimiter insertion"
       },
       "rot13": {
         "n": 446,
-        "detected": 294,
-        "rate": 0.6591928251121076,
-        "ci_low": 0.6140109562150285,
-        "ci_high": 0.7016557140084457,
+        "detected": 290,
+        "rate": 0.6502242152466368,
+        "ci_low": 0.6048516681821965,
+        "ci_high": 0.6930309642822088,
         "decode_fidelity": 0.6412556053811659,
         "technique": "ROT13 substitution"
       },
       "binary": {
         "n": 446,
-        "detected": 162,
-        "rate": 0.3632286995515695,
-        "ci_low": 0.3199378840229796,
-        "ci_high": 0.4088555401512185,
+        "detected": 161,
+        "rate": 0.3609865470852018,
+        "ci_low": 0.31777379934315086,
+        "ci_high": 0.40657361539128,
         "decode_fidelity": 0.3609865470852018,
         "technique": "binary encoding"
       },
       "atbash": {
         "n": 446,
-        "detected": 246,
-        "rate": 0.5515695067264574,
-        "ci_low": 0.5051676402694398,
-        "ci_high": 0.5970905768452068,
+        "detected": 245,
+        "rate": 0.5493273542600897,
+        "ci_low": 0.502923802719895,
+        "ci_high": 0.5948884049549843,
         "decode_fidelity": 0.5426008968609866,
         "technique": "Atbash cipher"
       },
@@ -227,8 +227,8 @@
       }
     },
     "canonical_mean": 1.0,
-    "adversarial_mean": 0.7179091928251121,
-    "robustness_gap_points": 28.20908071748879,
+    "adversarial_mean": 0.7230941704035874,
+    "robustness_gap_points": 27.69058295964126,
     "variants_evading": [
       "flip",
       "char_swap",
@@ -236,5 +236,5 @@
       "binary"
     ]
   },
-  "generated_at": "2026-09-11 21:39:18 UTC"
+  "generated_at": "2026-09-12 01:18:40 UTC"
 }

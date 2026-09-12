@@ -200,7 +200,7 @@ DETECTORS = dict(HARD_DETECTORS, leet=detect_leet)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Canonicalisation layer
+# Canonicalisation layer 
 # ─────────────────────────────────────────────────────────────────────────────
 
 CANON_DRIFT_THRESHOLD = 0.08
@@ -236,10 +236,15 @@ def decode_tags(s):
     return TAG_BLOCK.sub(rep, s)
 
 def collapse_spacing(s):
-    # "I g n o r e   a l l" -> "Ignore all"   (>=4 single chars in a row)
+    """Undo letter spacing: "I g n o r e" -> "Ignore".
+
+    Restricted to alphabetic characters. Drug labels contain tabular numeric
+    data written as " 3 6 1 5 1 ", and an earlier version that matched \\w
+    collapsed those into "36151", which registered as obfuscation.
+    """
     def rep(m):
         return m.group().replace(" ", "")
-    return re.sub(r"(?:\b\w\b[ ]){3,}\b\w\b", rep, s)
+    return re.sub(r"(?:\b[A-Za-z]\b[ ]){3,}\b[A-Za-z]\b", rep, s)
 
 def collapse_delims(s):
     # "I-g-n-o-r-e" -> "Ignore"
@@ -357,32 +362,76 @@ def recover(text):
     return joined, sorted(set(applied)), _wordscore(joined)
 
 
-def _alteration(raw, canonical):
-    """Largest per-segment change caused by canonicalisation.
 
-    Measured per segment, not per document. An injected payload is local: a
-    twelve-word payload inside a 250-word retrieval chunk shifts whole-document
-    similarity by almost nothing, so a global measure misses exactly the case
-    this is meant to catch. Taking the maximum over segments restores the
-    signal without raising sensitivity on clean text, because clean segments
-    do not change at all.
+BENIGN_TYPOGRAPHY = {
+    "\u2265": ">=", "\u2264": "<=", "\u2260": "!=", "\u2248": "~",
+    "\u2191": "|", "\u2193": "|", "\u2192": "->", "\u2190": "<-",
+    "\u201c": '"', "\u201d": '"', "\u2018": "'", "\u2019": "'",
+    "\u2014": "--", "\u2013": "-", "\u2026": "...",
+    "\u00b5": "u", "\u03bc": "u", "\u00b0": "deg", "\u00b1": "+/-",
+    "\u00ae": "(R)", "\u2122": "(TM)", "\u00a9": "(C)",
+    "\u00d7": "x", "\u00b7": ".", "\u00bd": "1/2", "\u00bc": "1/4",
+    "\u2020": "+", "\u2021": "++", "\u00a7": "S", "\u00b6": "P",
+    "\u03b1": "alpha", "\u03b2": "beta", "\u03b3": "gamma", "\u03ba": "kappa",
+    "\u00a0": " ",
+}
+
+def _neutralise_typography(s):
+    for k, v in BENIGN_TYPOGRAPHY.items():
+        s = s.replace(k, v)
+    return s
+
+
+def _alteration(raw, canonical, window=160):
+    """Largest locally concentrated change caused by canonicalisation.
+
+    Measured over a sliding window rather than per sentence. Canonicalisation
+    can alter sentence boundaries, after which comparing the nth raw sentence
+    against the nth canonical sentence compares unrelated text and reports
+    spurious drift. A character-level changed-mask with a sliding window has no
+    alignment to get wrong.
+
+    Expected scientific typography is neutralised on both sides first, so
+    converting a label's "\u2265" or curly quotes counts as no change while
+    genuine obfuscation still registers.
     """
-    raw_segs = _segments(re.sub(r"\s+", " ", raw).strip())
-    can_segs = _segments(re.sub(r"\s+", " ", canonical).strip())
-    if not raw_segs:
+    a = re.sub(r"\s+", " ", _neutralise_typography(raw)).strip()
+    b = re.sub(r"\s+", " ", _neutralise_typography(canonical)).strip()
+    if len(a) < 20:
         return 0.0
-    worst = 0.0
-    for i, (_a, _b, rseg) in enumerate(raw_segs):
-        cseg = can_segs[i][2] if i < len(can_segs) else ""
-        if len(rseg.strip()) < 12:
-            continue
-        d = 1.0 - difflib.SequenceMatcher(None, rseg, cseg).ratio()
-        worst = max(worst, d)
+
+    mask = [0] * len(a)
+    for tag, i1, i2, _j1, _j2 in difflib.SequenceMatcher(None, a, b).get_opcodes():
+        if tag != "equal":
+            for i in range(i1, min(i2, len(a))):
+                mask[i] = 1
+            if tag == "insert":
+                for i in range(max(0, i1 - 1), min(i1 + 1, len(a))):
+                    mask[i] = 1
+
+    w = min(window, len(mask))
+    run = sum(mask[:w])
+    worst = run / w
+    for i in range(w, len(mask)):
+        run += mask[i] - mask[i - w]
+        worst = max(worst, run / w)
     return worst
 
 
 def module1(text, max_depth=3):
-    """Encoding-aware ingestion, v2. """
+    """Encoding-aware ingestion, v2.
+
+    Two stages. Canonicalisation first: strip invisible characters, decode tag
+    blocks, transliterate homoglyphs and styled characters to ASCII, undo letter
+    spacing and delimiter insertion, and reverse simple ciphers where doing so
+    makes the text read more like English. Then the format decoders for Base64,
+    hex, Unicode escapes, URL encoding and Leetspeak.
+
+    Detection fires on either signal: a decoder matched, or canonicalisation
+    materially altered the input. The second matters because legitimate clinical
+    text survives canonicalisation almost unchanged, while obfuscated text does
+    not -- so the alteration itself is evidence.
+    """
     canonical, ciphers, _score = recover(text)
     drift = _alteration(text, canonical)
 
