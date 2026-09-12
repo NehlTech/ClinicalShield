@@ -11,6 +11,7 @@ import torch.nn.functional as F
 OVERRIDE_MARKERS = ['ignore previous', 'ignore all previous', 'ignore the above', 'disregard the', 'disregard all', 'system override', 'new instruction', 'override:', 'admin:', '[admin]', '[config]', '[system]', 'forget everything', 'forget the', 'prior context is void', 'end of document', 'attention model', 'do not follow', 'your reply must', 'you must instead', 'instead output']
 
 TAU_INTENT = 0.90
+TAU_CONTRADICTION = 0.90
 
 
 def mean_pooled(texts, tokenizer, model, device="cpu", max_len=512, batch=32):
@@ -26,12 +27,28 @@ def mean_pooled(texts, tokenizer, model, device="cpu", max_len=512, batch=32):
     return torch.cat(out)
 
 
-def module3(document, query, cosine=None, tau=TAU_INTENT):
-    """Returns (flagged, reason). Cosine may be precomputed."""
+def module3(document, query, cosine=None, contradiction=None,
+            tau=TAU_INTENT, tau_contradiction=TAU_CONTRADICTION):
+    """Semantic intent verification over three signals.
+
+    cosine        minimum per-sentence similarity to the query. Document-level
+                  pooling dilutes a short payload to roughly 6% of the vector
+                  and does not separate the classes.
+    markers       literal instruction-override phrases.
+    contradiction probability that some sentence contradicts the authentic
+                  source passage. This is the only one of the three that
+                  produces a signal on misinformation payloads, which are on
+                  topic by construction and therefore invisible to similarity.
+
+    Returns (flagged, reason).
+    """
     if cosine is not None and cosine < tau:
         return True, "similarity"
     low = document.lower()
     for m in OVERRIDE_MARKERS:
         if m in low:
             return True, "marker"
+    if (contradiction is not None and tau_contradiction is not None
+            and contradiction >= tau_contradiction):
+        return True, "contradiction"
     return False, None

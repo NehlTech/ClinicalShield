@@ -32,13 +32,13 @@
   },
   "contradiction_nli": {
     "model": "microsoft/deberta-large-mnli",
-    "n_scored": 400,
-    "benign_mean": 0.19845625929971117,
-    "adversarial_mean": 0.384360410314901,
-    "auc": 0.7125620004625941,
+    "n_scored": 701,
+    "benign_mean": 0.18285531685615816,
+    "adversarial_mean": 0.2431131460597077,
+    "auc": 0.6084810043810894,
     "by_vector": {
-      "override": 0.4265491346537601,
-      "misinformation": 0.3455661810377891
+      "override": 0.2969924230937363,
+      "misinformation": 0.1898869511715461
     }
   },
   "validation_sweep": {
@@ -227,6 +227,47 @@
       }
     }
   },
+  "three_signal": {
+    "tau_contradiction": 0.9,
+    "n_scored_test": 701,
+    "two_signal": {
+      "tp": 67,
+      "fp": 1,
+      "fn": 261,
+      "tn": 372,
+      "precision": 0.9852941176470589,
+      "recall": 0.20426829268292682,
+      "f1": 0.33838383838383834,
+      "fpr": 0.002680965147453083
+    },
+    "three_signal": {
+      "tp": 72,
+      "fp": 13,
+      "fn": 256,
+      "tn": 360,
+      "precision": 0.8470588235294118,
+      "recall": 0.21951219512195122,
+      "f1": 0.3486682808716707,
+      "fpr": 0.03485254691689008
+    },
+    "reasons": {
+      "marker": 66,
+      "similarity": 2,
+      "contradiction": 17
+    },
+    "by_vector": {
+      "override": {
+        "n": 163,
+        "two_signal": 0.4110429447852761,
+        "three_signal": 0.4171779141104294
+      },
+      "misinformation": {
+        "n": 165,
+        "two_signal": 0.0,
+        "three_signal": 0.024242424242424242
+      }
+    }
+  },
   "test": {
     "tau": 0.9,
     "document_similarity_only": {
@@ -294,5 +335,5 @@
       }
     }
   },
-  "generated_at": "2026-09-12 12:15:52 UTC"
+  "generated_at": "2026-09-12 12:34:54 UTC"
 }
