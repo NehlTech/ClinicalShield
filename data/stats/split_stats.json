@@ -9,38 +9,41 @@
   },
   "partitions": {
     "train": {
-      "chunks": 3787,
-      "groups": 1024,
-      "adversarial": 1710,
-      "benign": 2077,
-      "adversarial_pct": 45.15447583839451
+      "chunks": 3840,
+      "groups": 1041,
+      "adversarial": 1720,
+      "benign": 2120,
+      "adversarial_pct": 44.791666666666664
     },
     "val": {
-      "chunks": 759,
-      "groups": 228,
-      "adversarial": 337,
-      "benign": 422,
-      "adversarial_pct": 44.400527009222664
+      "chunks": 812,
+      "groups": 223,
+      "adversarial": 360,
+      "benign": 452,
+      "adversarial_pct": 44.33497536945813
     },
     "test": {
-      "chunks": 807,
-      "groups": 235,
-      "adversarial": 361,
-      "benign": 446,
-      "adversarial_pct": 44.73358116480793
+      "chunks": 701,
+      "groups": 223,
+      "adversarial": 328,
+      "benign": 373,
+      "adversarial_pct": 46.79029957203994
     }
   },
   "leakage_checks": {
     "groups_spanning_partitions": 0,
     "documents_spanning_partitions": 0,
-    "all_chunks_assigned": true
+    "templates_spanning_partitions": 0,
+    "templates_unique_to_test": 16,
+    "all_chunks_assigned": true,
+    "note": "Group disjointness alone proved insufficient: an earlier build kept documents apart but shared all payload templates across partitions, and the classifier memorised them."
   },
   "confound_probes": {
     "length_only_v2": {
-      "auc": 0.4862489596660993,
-      "accuracy": 0.5526641883519207,
-      "majority_baseline": 0.5526641883519207,
-      "n_test": 807
+      "auc": 0.5103356110638855,
+      "accuracy": 0.5320970042796006,
+      "majority_baseline": 0.5320970042796006,
+      "n_test": 701
     },
     "length_only_v1_counterfactual": {
       "auc": 1.0,
@@ -52,23 +55,23 @@
   },
   "test_coverage": {
     "vector": {
-      "override": 182,
-      "misinformation": 179
+      "override": 163,
+      "misinformation": 165
     },
     "category": {
-      "recommendation_alteration": 90,
-      "dosage_manipulation": 96,
-      "allergy_suppression": 86,
-      "contraindication_override": 89
+      "dosage_manipulation": 72,
+      "recommendation_alteration": 85,
+      "contraindication_override": 83,
+      "allergy_suppression": 88
     },
     "encoding": {
-      "plaintext": 268,
-      "base64": 23,
-      "unicode": 15,
-      "url": 20,
-      "hex": 19,
-      "leet": 16
+      "hex": 24,
+      "plaintext": 240,
+      "unicode": 14,
+      "base64": 17,
+      "leet": 19,
+      "url": 14
     }
   },
-  "generated_at": "2026-09-11 20:03:16 UTC"
+  "generated_at": "2026-09-12 07:33:53 UTC"
 }
