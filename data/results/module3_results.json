@@ -30,24 +30,7 @@
       "note": "minimum per-sentence similarity to the query"
     }
   },
-  "contradiction_nli": {
-    "model": "microsoft/deberta-large-mnli",
-    "n_scored": 696,
-    "statistic": "within-document z-score of maximum per-sentence contradiction",
-    "benign_mean": 4.984934717276551,
-    "adversarial_mean": 5.571726486535014,
-    "auc": 0.5088770657126969,
-    "absolute_max": {
-      "benign_mean": 0.5197340160783539,
-      "adversarial_mean": 0.6076832236174274,
-      "auc": 0.5869861137625645,
-      "note": "max over (window x sentence) pairs; rises with the number of comparisons regardless of signal, which inflated both classes and collapsed separation"
-    },
-    "by_vector": {
-      "override": 4.683733473706464,
-      "misinformation": 6.432646541655379
-    }
-  },
+  "contradiction_nli": {},
   "validation_sweep": {
     "similarity_only": {
       "0.1": {
@@ -302,5 +285,5 @@
       }
     }
   },
-  "generated_at": "2026-09-12 21:28:27 UTC"
+  "generated_at": "2026-09-12 21:34:07 UTC"
 }
