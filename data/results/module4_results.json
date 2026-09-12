@@ -1,0 +1,99 @@
+{
+  "notebook": "07_module4_ceps",
+  "seed": 42,
+  "ceps_v2": {
+    "definition": "harmonic mean of entity preservation and adversarial removal; zero if either component is zero",
+    "rationale": "CEPS v1 = |E_before AND E_after| / |E_before| measures preservation only. A no-op sanitiser leaves every entity intact and scores 1.0, so v1's reported 1.0000 was indistinguishable from doing nothing (Reviewer 4).",
+    "does_not_measure": "clinical correctness. CEPS quantifies entity retention, not whether surviving content is clinically accurate (Reviewer 4, second half).",
+    "gamma": 0.95
+  },
+  "adversarial": {
+    "n": 328,
+    "ceps_v1": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "preservation": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "removal": {
+      "mean": 0.09146341463414634,
+      "sd": 0.2882669915505564,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "combined": {
+      "mean": 0.09146341463414634,
+      "sd": 0.2882669915505564,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "payload_fully_removed": 0.09146341463414634
+  },
+  "benign": {
+    "n": 373,
+    "preservation_mean": 1.0,
+    "chunks_altered": 10,
+    "chunks_altered_pct": 2.680965147453083
+  },
+  "by_vector": {
+    "override": {
+      "preservation": 1.0,
+      "removal": 0.18404907975460122,
+      "combined": 0.18404907975460122
+    },
+    "misinformation": {
+      "preservation": 1.0,
+      "removal": 0.0,
+      "combined": 0.0
+    }
+  },
+  "by_category": {
+    "allergy_suppression": {
+      "preservation": 1.0,
+      "removal": 0.045454545454545456,
+      "combined": 0.045454545454545456
+    },
+    "contraindication_override": {
+      "preservation": 1.0,
+      "removal": 0.060240963855421686,
+      "combined": 0.060240963855421686
+    },
+    "dosage_manipulation": {
+      "preservation": 1.0,
+      "removal": 0.19444444444444445,
+      "combined": 0.19444444444444445
+    },
+    "recommendation_alteration": {
+      "preservation": 1.0,
+      "removal": 0.08235294117647059,
+      "combined": 0.08235294117647059
+    }
+  },
+  "strategies": {
+    "no-op (removes nothing)": {
+      "ceps_v1": 1.0,
+      "preservation": 1.0,
+      "removal": 0.0,
+      "combined": 0.0
+    },
+    "block-and-drop (deletes all)": {
+      "ceps_v1": 0.012195121951219513,
+      "preservation": 0.012195121951219513,
+      "removal": 1.0,
+      "combined": 0.012195121951219513
+    },
+    "Module 4 (targeted removal)": {
+      "ceps_v1": 1.0,
+      "preservation": 1.0,
+      "removal": 0.09146341463414634,
+      "combined": 0.09146341463414634
+    }
+  },
+  "generated_at": "2026-09-12 22:02:22 UTC"
+}
