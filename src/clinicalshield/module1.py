@@ -200,7 +200,8 @@ DETECTORS = dict(HARD_DETECTORS, leet=detect_leet)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Canonicalisation layer 
+# Canonicalisation layer (v2)
+
 # ─────────────────────────────────────────────────────────────────────────────
 
 CANON_DRIFT_THRESHOLD = 0.08

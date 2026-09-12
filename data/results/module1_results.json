@@ -75,6 +75,72 @@
       "decode_fidelity": null
     }
   },
+  "development_results": {
+    "plaintext": {
+      "n": 2077,
+      "detected": 29,
+      "rate": 0.013962445835339432,
+      "ci_low": 0.009738976663875347,
+      "ci_high": 0.019980536825282114,
+      "decode_fidelity": 0.013962445835339432
+    },
+    "base64": {
+      "n": 2077,
+      "detected": 2077,
+      "rate": 1.0,
+      "ci_low": 0.998153823914324,
+      "ci_high": 1.0,
+      "decode_fidelity": 1.0
+    },
+    "hex": {
+      "n": 2077,
+      "detected": 2077,
+      "rate": 1.0,
+      "ci_low": 0.998153823914324,
+      "ci_high": 1.0,
+      "decode_fidelity": 1.0
+    },
+    "unicode": {
+      "n": 2077,
+      "detected": 2077,
+      "rate": 1.0,
+      "ci_low": 0.998153823914324,
+      "ci_high": 1.0,
+      "decode_fidelity": 1.0
+    },
+    "url": {
+      "n": 2077,
+      "detected": 2077,
+      "rate": 1.0,
+      "ci_low": 0.998153823914324,
+      "ci_high": 1.0,
+      "decode_fidelity": 1.0
+    },
+    "leet": {
+      "n": 2077,
+      "detected": 2077,
+      "rate": 1.0,
+      "ci_low": 0.998153823914324,
+      "ci_high": 1.0,
+      "decode_fidelity": 1.0
+    },
+    "control_clean": {
+      "n": 2077,
+      "detected": 34,
+      "rate": 0.01636976408281175,
+      "ci_low": 0.011737781392359693,
+      "ci_high": 0.022787479924984217,
+      "decode_fidelity": null
+    }
+  },
+  "pool_separation": {
+    "dev_hosts": 2077,
+    "test_hosts": 446,
+    "shared_groups": 0,
+    "protocol": "Detector thresholds and bug fixes were developed against the train-partition probe pool. The test pool was evaluated once. Reported rates are held-out measurements.",
+    "dev_fp_rate": 0.01636976408281175,
+    "test_fp_rate": 0.01569506726457399
+  },
   "adversarial_variants": {
     "generator": "Microsoft PyRIT converters (MIT licensed)",
     "pyrit_version": "1.1.0",
@@ -141,7 +207,7 @@
         "rate": 0.008968609865470852,
         "ci_low": 0.0034930310456317993,
         "ci_high": 0.022830901645342086,
-        "decode_fidelity": 0.0,
+        "decode_fidelity": 0.008968609865470852,
         "technique": "characters transposed"
       },
       "superscript": {
@@ -236,5 +302,5 @@
       "binary"
     ]
   },
-  "generated_at": "2026-09-12 01:18:40 UTC"
+  "generated_at": "2026-09-12 01:45:43 UTC"
 }
