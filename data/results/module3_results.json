@@ -5,18 +5,41 @@
   "protocol": {
     "tau_selected_on": "validation partition; maximum recall subject to a false-positive budget of 5%",
     "fpr_budget": 0.05,
-    "tau_selected": 0.1,
+    "tau_selected": 0.9,
     "tau_v1": 0.3,
     "note": "v1 reported tau = 0.30 without stated justification. The sweep runs on validation and the operating point is applied unchanged to test. Selection is by recall under an explicit false-positive budget rather than by F1: benign and adversarial cosines overlap heavily, so F1 is maximised at a threshold that flags most documents, which is not a deployable operating point for a CDSS.",
     "query_construction": "derived from host document metadata (drug and label section) only; never from injected payload text",
-    "n_override_markers": 21
+    "n_override_markers": 21,
+    "scoring_level": "sentence (minimum similarity); document level reported for contrast"
   },
   "similarity_distribution": {
-    "benign_mean": 0.9646206755387156,
-    "benign_sd": 0.007748509428056222,
-    "adversarial_mean": 0.9638142307038323,
-    "adversarial_sd": 0.012060003630325444,
-    "auc_similarity_alone": 0.45905929019848946
+    "document_level": {
+      "benign_mean": 0.9646206755387156,
+      "benign_sd": 0.007748509428056222,
+      "adversarial_mean": 0.9638142307038323,
+      "adversarial_sd": 0.012060003630325444,
+      "auc": 0.45905929019848946,
+      "note": "v1 design. A ~16-word payload in a ~250-word chunk is ~6% of tokens, so mean pooling leaves the vector essentially unmoved."
+    },
+    "sentence_level": {
+      "benign_mean": 0.9567332664450887,
+      "benign_sd": 0.010761900395651686,
+      "adversarial_mean": 0.95229306935868,
+      "adversarial_sd": 0.01677277526554321,
+      "auc": 0.5633228090857301,
+      "note": "minimum per-sentence similarity to the query"
+    }
+  },
+  "contradiction_nli": {
+    "model": "microsoft/deberta-large-mnli",
+    "n_scored": 400,
+    "benign_mean": 0.19845625929971117,
+    "adversarial_mean": 0.384360410314901,
+    "auc": 0.7125620004625941,
+    "by_vector": {
+      "override": 0.4265491346537601,
+      "misinformation": 0.3455661810377891
+    }
   },
   "validation_sweep": {
     "similarity_only": {
@@ -193,20 +216,20 @@
         "fpr": 0.0
       },
       "0.9": {
-        "tp": 91,
+        "tp": 92,
         "fp": 0,
-        "fn": 269,
+        "fn": 268,
         "tn": 452,
         "precision": 1.0,
-        "recall": 0.25277777777777777,
-        "f1": 0.4035476718403547,
+        "recall": 0.25555555555555554,
+        "f1": 0.4070796460176991,
         "fpr": 0.0
       }
     }
   },
   "test": {
-    "tau": 0.1,
-    "similarity_only": {
+    "tau": 0.9,
+    "document_similarity_only": {
       "tp": 0,
       "fp": 0,
       "fn": 328,
@@ -216,6 +239,32 @@
       "f1": 0.0,
       "fpr": 0.0,
       "reasons": {}
+    },
+    "sentence_similarity_only": {
+      "tp": 1,
+      "fp": 1,
+      "fn": 327,
+      "tn": 372,
+      "precision": 0.5,
+      "recall": 0.003048780487804878,
+      "f1": 0.006060606060606061,
+      "fpr": 0.002680965147453083,
+      "reasons": {
+        "similarity": 2
+      }
+    },
+    "similarity_only": {
+      "tp": 1,
+      "fp": 1,
+      "fn": 327,
+      "tn": 372,
+      "precision": 0.5,
+      "recall": 0.003048780487804878,
+      "f1": 0.006060606060606061,
+      "fpr": 0.002680965147453083,
+      "reasons": {
+        "similarity": 2
+      }
     },
     "markers_only": {
       "tp": 66,
@@ -231,18 +280,19 @@
       }
     },
     "combined": {
-      "tp": 66,
-      "fp": 0,
-      "fn": 262,
-      "tn": 373,
-      "precision": 1.0,
-      "recall": 0.20121951219512196,
-      "f1": 0.3350253807106599,
-      "fpr": 0.0,
+      "tp": 67,
+      "fp": 1,
+      "fn": 261,
+      "tn": 372,
+      "precision": 0.9852941176470589,
+      "recall": 0.20426829268292682,
+      "f1": 0.33838383838383834,
+      "fpr": 0.002680965147453083,
       "reasons": {
-        "marker": 66
+        "marker": 66,
+        "similarity": 2
       }
     }
   },
-  "generated_at": "2026-09-12 11:32:53 UTC"
+  "generated_at": "2026-09-12 12:15:52 UTC"
 }

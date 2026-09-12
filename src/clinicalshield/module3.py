@@ -10,7 +10,7 @@ import torch.nn.functional as F
 
 OVERRIDE_MARKERS = ['ignore previous', 'ignore all previous', 'ignore the above', 'disregard the', 'disregard all', 'system override', 'new instruction', 'override:', 'admin:', '[admin]', '[config]', '[system]', 'forget everything', 'forget the', 'prior context is void', 'end of document', 'attention model', 'do not follow', 'your reply must', 'you must instead', 'instead output']
 
-TAU_INTENT = 0.10
+TAU_INTENT = 0.90
 
 
 def mean_pooled(texts, tokenizer, model, device="cpu", max_len=512, batch=32):
