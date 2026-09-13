@@ -1,0 +1,236 @@
+{
+  "notebook": "08_baselines_transfer",
+  "seed": 42,
+  "protocol": {
+    "partitions": "same train/test split as ClinicalShield (NB03)",
+    "ingestion": "Module 1 applied to every baseline input",
+    "note": "v1's baseline figures conflicted with its own repository JSON and were in places arithmetically incompatible with the stated supports (R4-4). Every row here is computed from predictions and asserted consistent with its confusion matrix.",
+    "n_test": 701
+  },
+  "baselines": {
+    "keyword": {
+      "name": "keyword",
+      "accuracy": 0.49358059914407987,
+      "precision": 0.46993318485523383,
+      "recall": 0.6432926829268293,
+      "f1": 0.5431145431145431,
+      "fpr": 0.6380697050938338,
+      "tn": 135,
+      "fp": 238,
+      "fn": 117,
+      "tp": 211,
+      "n": 701,
+      "auc": NaN
+    },
+    "regex_patterns": {
+      "name": "regex_patterns",
+      "accuracy": 0.5920114122681883,
+      "precision": 1.0,
+      "recall": 0.12804878048780488,
+      "f1": 0.22702702702702704,
+      "fpr": 0.0,
+      "tn": 373,
+      "fp": 0,
+      "fn": 286,
+      "tp": 42,
+      "n": 701,
+      "auc": NaN
+    },
+    "tfidf_lr": {
+      "name": "tfidf_lr",
+      "accuracy": 0.6590584878744651,
+      "precision": 0.9009009009009009,
+      "recall": 0.3048780487804878,
+      "f1": 0.45558086560364464,
+      "fpr": 0.029490616621983913,
+      "tn": 362,
+      "fp": 11,
+      "fn": 228,
+      "tp": 100,
+      "n": 701,
+      "auc": 0.8179641012227816
+    },
+    "tfidf_svm": {
+      "name": "tfidf_svm",
+      "accuracy": 0.62339514978602,
+      "precision": 0.9571428571428572,
+      "recall": 0.20426829268292682,
+      "f1": 0.33668341708542715,
+      "fpr": 0.00804289544235925,
+      "tn": 370,
+      "fp": 3,
+      "fn": 261,
+      "tp": 67,
+      "n": 701,
+      "auc": NaN
+    },
+    "char_ngram_lr": {
+      "name": "char_ngram_lr",
+      "accuracy": 0.6433666191155493,
+      "precision": 0.6893203883495146,
+      "recall": 0.4329268292682927,
+      "f1": 0.5318352059925093,
+      "fpr": 0.17158176943699732,
+      "tn": 309,
+      "fp": 64,
+      "fn": 186,
+      "tp": 142,
+      "n": 701,
+      "auc": 0.7172889557313804
+    },
+    "mixture_of_encodings": {
+      "name": "mixture_of_encodings",
+      "accuracy": 0.5320970042796006,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "fpr": 0.0,
+      "tn": 373,
+      "fp": 0,
+      "fn": 328,
+      "tp": 0,
+      "n": 701,
+      "auc": NaN
+    }
+  },
+  "clinicalshield": {
+    "per_seed": [
+      {
+        "name": "clinicalshield_seed13",
+        "accuracy": 0.9814550641940085,
+        "precision": 1.0,
+        "recall": 0.9603658536585366,
+        "f1": 0.9797822706065319,
+        "fpr": 0.0,
+        "tn": 373,
+        "fp": 0,
+        "fn": 13,
+        "tp": 315,
+        "n": 701,
+        "auc": 0.9988965539789446
+      },
+      {
+        "name": "clinicalshield_seed42",
+        "accuracy": 0.9671897289586305,
+        "precision": 1.0,
+        "recall": 0.9298780487804879,
+        "f1": 0.9636650868878357,
+        "fpr": 0.0,
+        "tn": 373,
+        "fp": 0,
+        "fn": 23,
+        "tp": 305,
+        "n": 701,
+        "auc": 0.9995586215915778
+      },
+      {
+        "name": "clinicalshield_seed101",
+        "accuracy": 0.9557774607703281,
+        "precision": 1.0,
+        "recall": 0.9054878048780488,
+        "f1": 0.9504,
+        "fpr": 0.0,
+        "tn": 373,
+        "fp": 0,
+        "fn": 31,
+        "tp": 297,
+        "n": 701,
+        "auc": 0.9985205649643627
+      },
+      {
+        "name": "clinicalshield_seed2024",
+        "accuracy": 0.9714693295292439,
+        "precision": 1.0,
+        "recall": 0.9390243902439024,
+        "f1": 0.9685534591194969,
+        "fpr": 0.0,
+        "tn": 373,
+        "fp": 0,
+        "fn": 20,
+        "tp": 308,
+        "n": 701,
+        "auc": 0.9969348721637351
+      },
+      {
+        "name": "clinicalshield_seed31337",
+        "accuracy": 0.9871611982881597,
+        "precision": 0.9938080495356038,
+        "recall": 0.9786585365853658,
+        "f1": 0.9861751152073732,
+        "fpr": 0.005361930294906166,
+        "tn": 371,
+        "fp": 2,
+        "fn": 7,
+        "tp": 321,
+        "n": 701,
+        "auc": 0.9997793107957889
+      }
+    ],
+    "aggregate": {
+      "accuracy": {
+        "mean": 0.9726105563480741,
+        "sd": 0.012288077299491012
+      },
+      "precision": {
+        "mean": 0.9987616099071207,
+        "sd": 0.002769124430340279
+      },
+      "recall": {
+        "mean": 0.9426829268292684,
+        "sd": 0.02814141648588858
+      },
+      "f1": {
+        "mean": 0.9697151863642475,
+        "sd": 0.013993794882137036
+      },
+      "fpr": {
+        "mean": 0.0010723860589812334,
+        "sd": 0.0023979281260051366
+      },
+      "auc": {
+        "mean": 0.9987379846988818,
+        "sd": 0.0011271019609705448
+      }
+    },
+    "by_vector": {
+      "override": {
+        "mean": 0.9828220858895704,
+        "sd": 0.011800849117589786
+      },
+      "misinformation": {
+        "mean": 0.9030303030303031,
+        "sd": 0.04810456929208347
+      }
+    }
+  },
+  "external_transfer": {
+    "rationale": "Attack templates were authored for this study to satisfy the requirement for clinically specific threat scenarios (R2-2). To establish that detection does not depend on the authors' phrasing, the trained detector was evaluated without adaptation on independent public corpora.",
+    "results": {
+      "deepset": {
+        "hf_id": "deepset/prompt-injections",
+        "n": 534,
+        "n_adversarial": 202,
+        "accuracy": {
+          "mean": 0.5936329588014981,
+          "sd": 0.0325702755260788
+        },
+        "recall": {
+          "mean": 0.5475247524752476,
+          "sd": 0.17553676416347389
+        },
+        "fpr": {
+          "mean": 0.3783132530120482,
+          "sd": 0.1441635617280611
+        },
+        "auc": {
+          "mean": 0.6181080758678278,
+          "sd": 0.07181989112276167
+        }
+      }
+    }
+  },
+  "mixture_of_encodings": {
+    "note": "prevention-only: re-encodes input to neutralise obfuscation and emits no detection signal, so recall against an injection is zero by construction. Benchmarked here for the first time; v1 discussed it without measuring it."
+  },
+  "generated_at": "2026-09-13 13:51:22 UTC"
+}
