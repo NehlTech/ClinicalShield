@@ -15,3 +15,7 @@ data/raw/mpib_raw/
 
 data/corpus/*.jsonl
 *.ckpt
+
+# MPIB restricted payloads - never redistribute
+data/raw/mpib_raw/data/restricted/
+**/payload_registry.json
