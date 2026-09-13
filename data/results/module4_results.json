@@ -113,5 +113,23 @@
       "combined": 0.6066113375578753
     }
   },
-  "generated_at": "2026-09-13 06:47:43 UTC"
+  "pipeline_policy": {
+    "verify_tau": 0.5,
+    "detect_tau": 0.5,
+    "sanitise_and_pass": {
+      "attacks_passed": 328,
+      "payload_survives": 100,
+      "payload_survives_pct": 30.48780487804878,
+      "benign_blocked": 0
+    },
+    "verify_or_block": {
+      "attacks_passed": 304,
+      "attacks_withheld": 24,
+      "payload_survives": 83,
+      "residual_risk_pct": 25.304878048780488,
+      "benign_blocked": 0,
+      "benign_blocked_pct": 0.0
+    }
+  },
+  "generated_at": "2026-09-13 12:38:35 UTC"
 }
