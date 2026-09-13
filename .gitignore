@@ -12,3 +12,7 @@ data/raw/
 data/processed/
 data/splits/
 data/raw/mpib_raw/
+
+# MPIB restricted payloads - never redistribute
+data/raw/mpib_raw/data/restricted/
+**/payload_registry.json
