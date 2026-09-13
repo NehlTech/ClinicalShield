@@ -205,26 +205,54 @@
   },
   "external_transfer": {
     "rationale": "Attack templates were authored for this study to satisfy the requirement for clinically specific threat scenarios (R2-2). To establish that detection does not depend on the authors' phrasing, the trained detector was evaluated without adaptation on independent public corpora.",
-    "results": {
-      "deepset": {
-        "hf_id": "deepset/prompt-injections",
-        "n": 534,
-        "n_adversarial": 202,
-        "accuracy": {
-          "mean": 0.5936329588014981,
-          "sd": 0.0325702755260788
-        },
-        "recall": {
-          "mean": 0.5475247524752476,
-          "sd": 0.17553676416347389
-        },
-        "fpr": {
-          "mean": 0.3783132530120482,
-          "sd": 0.1441635617280611
-        },
-        "auc": {
-          "mean": 0.6181080758678278,
-          "sd": 0.07181989112276167
+    "raw_prompts": {
+      "note": "External items are short generic user prompts; ClinicalShield classifies long clinical documents. Domain and format shift together, so this measures out-of-domain behaviour rather than payload-author generalisation.",
+      "results": {
+        "deepset": {
+          "hf_id": "deepset/prompt-injections",
+          "n": 534,
+          "n_adversarial": 202,
+          "accuracy": {
+            "mean": 0.5936329588014981,
+            "sd": 0.0325702755260788
+          },
+          "recall": {
+            "mean": 0.5475247524752476,
+            "sd": 0.17553676416347389
+          },
+          "fpr": {
+            "mean": 0.3783132530120482,
+            "sd": 0.1441635617280611
+          },
+          "auc": {
+            "mean": 0.6181080758678278,
+            "sd": 0.07181989112276167
+          }
+        }
+      }
+    },
+    "injected_payloads": {
+      "note": "External attack payloads injected into genuine clinical chunks using the NB02 length-matched procedure, with unmodified clinical chunks as negatives. Corpus, length and register held constant; only the payload author changes. This isolates whether detection depends on the authors' phrasing.",
+      "results": {
+        "deepset": {
+          "n_payloads": 187,
+          "n_hosts": 373,
+          "accuracy": {
+            "mean": 0.7573726541554959,
+            "sd": 0.09591712504020547
+          },
+          "recall": {
+            "mean": 0.5158176943699732,
+            "sd": 0.19347208716456432
+          },
+          "fpr": {
+            "mean": 0.0010723860589812334,
+            "sd": 0.0023979281260051366
+          },
+          "auc": {
+            "mean": 0.962304048760503,
+            "sd": 0.024669299184597735
+          }
         }
       }
     }
@@ -232,5 +260,5 @@
   "mixture_of_encodings": {
     "note": "prevention-only: re-encodes input to neutralise obfuscation and emits no detection signal, so recall against an injection is zero by construction. Benchmarked here for the first time; v1 discussed it without measuring it."
   },
-  "generated_at": "2026-09-13 13:51:22 UTC"
+  "generated_at": "2026-09-13 14:09:11 UTC"
 }
