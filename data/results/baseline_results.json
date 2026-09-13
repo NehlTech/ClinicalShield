@@ -255,10 +255,43 @@
           }
         }
       }
+    },
+    "matched_fpr": {
+      "note": "Recall at matched false positive rates. A fixed 0.5 threshold is calibrated to in-domain phrasing; comparing at equal FPR puts both conditions at the same operating point.",
+      "results": {
+        "in-domain (our payloads)": {
+          "fpr_0.001": {
+            "recall_mean": 0.9695121951219512,
+            "recall_sd": 0.005280642706002679
+          },
+          "fpr_0.010": {
+            "recall_mean": 0.9841463414634146,
+            "recall_sd": 0.008730378697119736
+          },
+          "fpr_0.050": {
+            "recall_mean": 0.9945121951219512,
+            "recall_sd": 0.005453824335365345
+          }
+        },
+        "deepset payloads": {
+          "fpr_0.001": {
+            "recall_mean": 0.6509383378016086,
+            "recall_sd": 0.10589642649741801
+          },
+          "fpr_0.010": {
+            "recall_mean": 0.7512064343163539,
+            "recall_sd": 0.095040119943838
+          },
+          "fpr_0.050": {
+            "recall_mean": 0.868632707774799,
+            "recall_sd": 0.07461083136769836
+          }
+        }
+      }
     }
   },
   "mixture_of_encodings": {
     "note": "prevention-only: re-encodes input to neutralise obfuscation and emits no detection signal, so recall against an injection is zero by construction. Benchmarked here for the first time; v1 discussed it without measuring it."
   },
-  "generated_at": "2026-09-13 14:09:11 UTC"
+  "generated_at": "2026-09-13 14:18:15 UTC"
 }
