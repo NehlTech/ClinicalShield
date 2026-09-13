@@ -123,24 +123,24 @@
       "benign_blocked": 0
     },
     "verify_or_block": {
-      "attacks_passed": 297,
-      "attacks_withheld": 31,
-      "payload_survives": 76,
-      "residual_risk_pct": 23.170731707317074,
+      "attacks_passed": 232,
+      "attacks_withheld": 96,
+      "payload_survives": 10,
+      "residual_risk_pct": 3.048780487804878,
       "benign_blocked": 0,
       "benign_blocked_pct": 0.0,
       "note": "re-scores with the same classifier, so it inherits the detector's blind spot"
     },
     "detect_and_block": {
-      "attacks_passed": 77,
-      "attacks_withheld": 251,
-      "payload_survives": 77,
-      "residual_risk_pct": 23.475609756097562,
+      "attacks_passed": 13,
+      "attacks_withheld": 315,
+      "payload_survives": 13,
+      "residual_risk_pct": 3.9634146341463414,
       "benign_blocked": 0,
       "benign_blocked_pct": 0.0,
       "note": "residual risk equals the detector miss rate; availability cost equals its false positive rate. No clinical content is recovered from withheld documents."
     },
     "interpretation": "Sanitisation is not the safety mechanism. Detection with blocking is safer and cheaper. Sanitisation recovers clinical utility from poisoned documents, which is what CEPS measures."
   },
-  "generated_at": "2026-09-13 13:25:22 UTC"
+  "generated_at": "2026-09-13 13:33:11 UTC"
 }
