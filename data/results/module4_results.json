@@ -105,7 +105,13 @@
       "preservation": 0.867711742864182,
       "removal": 0.7134146341463414,
       "combined": 0.6127088985334851
+    },
+    "+ adjacency (two-pass)": {
+      "ceps_v1": 0.867711742864182,
+      "preservation": 0.867711742864182,
+      "removal": 0.7134146341463414,
+      "combined": 0.6127088985334851
     }
   },
-  "generated_at": "2026-09-13 05:57:15 UTC"
+  "generated_at": "2026-09-13 06:30:00 UTC"
 }
