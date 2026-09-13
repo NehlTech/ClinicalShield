@@ -19,3 +19,4 @@ data/corpus/*.jsonl
 # MPIB restricted payloads - never redistribute
 data/raw/mpib_raw/data/restricted/
 **/payload_registry.json
+data/raw/pubmed_benign.csv
