@@ -10,69 +10,69 @@
   "adversarial": {
     "n": 328,
     "ceps_v1": {
-      "mean": 1.0,
-      "sd": 0.0,
-      "min": 1.0,
+      "mean": 0.867711742864182,
+      "sd": 0.25386983967135085,
+      "min": 0.0,
       "max": 1.0
     },
     "preservation": {
-      "mean": 1.0,
-      "sd": 0.0,
-      "min": 1.0,
+      "mean": 0.867711742864182,
+      "sd": 0.25386983967135085,
+      "min": 0.0,
       "max": 1.0
     },
     "removal": {
-      "mean": 0.09146341463414634,
-      "sd": 0.2882669915505564,
+      "mean": 0.7134146341463414,
+      "sd": 0.45216611320640027,
       "min": 0.0,
       "max": 1.0
     },
     "combined": {
-      "mean": 0.09146341463414634,
-      "sd": 0.2882669915505564,
+      "mean": 0.6127088985334851,
+      "sd": 0.4441559146275426,
       "min": 0.0,
       "max": 1.0
     },
-    "payload_fully_removed": 0.09146341463414634
+    "payload_fully_removed": 0.7134146341463414
   },
   "benign": {
     "n": 373,
     "preservation_mean": 1.0,
-    "chunks_altered": 10,
-    "chunks_altered_pct": 2.680965147453083
+    "chunks_altered": 27,
+    "chunks_altered_pct": 7.238605898123325
   },
   "by_vector": {
     "override": {
-      "preservation": 1.0,
-      "removal": 0.18404907975460122,
-      "combined": 0.18404907975460122
+      "preservation": 0.8996149045228798,
+      "removal": 0.5766871165644172,
+      "combined": 0.5030845378924165
     },
     "misinformation": {
-      "preservation": 1.0,
-      "removal": 0.0,
-      "combined": 0.0
+      "preservation": 0.8361952861952863,
+      "removal": 0.8484848484848485,
+      "combined": 0.7210044790455711
     }
   },
   "by_category": {
     "allergy_suppression": {
-      "preservation": 1.0,
-      "removal": 0.045454545454545456,
-      "combined": 0.045454545454545456
+      "preservation": 0.8498192148760331,
+      "removal": 0.6704545454545454,
+      "combined": 0.5650306033679239
     },
     "contraindication_override": {
-      "preservation": 1.0,
-      "removal": 0.060240963855421686,
-      "combined": 0.060240963855421686
+      "preservation": 0.8344186268885064,
+      "removal": 0.7349397590361446,
+      "combined": 0.5948657885936411
     },
     "dosage_manipulation": {
-      "preservation": 1.0,
-      "removal": 0.19444444444444445,
-      "combined": 0.19444444444444445
+      "preservation": 0.93008658008658,
+      "removal": 0.75,
+      "combined": 0.6998981606437746
     },
     "recommendation_alteration": {
-      "preservation": 1.0,
-      "removal": 0.08235294117647059,
-      "combined": 0.08235294117647059
+      "preservation": 0.8659103641456581,
+      "removal": 0.7058823529411765,
+      "combined": 0.6056387953291978
     }
   },
   "strategies": {
@@ -88,12 +88,24 @@
       "removal": 1.0,
       "combined": 0.012195121951219513
     },
-    "Module 4 (targeted removal)": {
-      "ceps_v1": 1.0,
-      "preservation": 1.0,
-      "removal": 0.09146341463414634,
-      "combined": 0.09146341463414634
+    "v1 rule (entity-protected)": {
+      "ceps_v1": 0.9807550681026291,
+      "preservation": 0.9807550681026291,
+      "removal": 0.20121951219512196,
+      "combined": 0.1880630183181531
+    },
+    "v2 rules (markers uncondit.)": {
+      "ceps_v1": 0.9807550681026291,
+      "preservation": 0.9807550681026291,
+      "removal": 0.20121951219512196,
+      "combined": 0.1880630183181531
+    },
+    "v2 rules + intent classifier": {
+      "ceps_v1": 0.867711742864182,
+      "preservation": 0.867711742864182,
+      "removal": 0.7134146341463414,
+      "combined": 0.6127088985334851
     }
   },
-  "generated_at": "2026-09-12 22:02:22 UTC"
+  "generated_at": "2026-09-13 05:57:15 UTC"
 }
