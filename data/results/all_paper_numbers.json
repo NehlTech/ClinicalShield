@@ -1,0 +1,1331 @@
+{
+  "notebook": "12_aggregation",
+  "seed": 42,
+  "purpose": "Single source for every number in the manuscript. v1's tables were transcribed by hand from notebook output and drifted from the figures they described; Reviewers 1 and 4 found four such inconsistencies. Nothing here is retyped.",
+  "sources": {
+    "corpus": "data/corpus/manifest.json",
+    "corpus_stats": "data/stats/corpus_stats.json",
+    "attacks": "data/stats/attack_stats.json",
+    "split": "data/stats/split_stats.json",
+    "module1": "data/results/module1_results.json",
+    "module2": "data/results/module2_results.json",
+    "module3": "data/results/module3_results.json",
+    "module4": "data/results/module4_results.json",
+    "baselines": "data/results/baseline_results.json",
+    "end_to_end": "data/results/end_to_end_results.json",
+    "mpib": "data/results/mpib_results.json",
+    "sweeps": "data/results/sweep_results.json"
+  },
+  "missing_sources": [],
+  "reconciliation": {
+    "checks": [
+      {
+        "check": "rag documents: manifest vs attack stats",
+        "value_a": 1604,
+        "value_b": 1604,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "total chunks: attack stats vs split partitions",
+        "value_a": 5353,
+        "value_b": 5353,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "adversarial: attack stats vs split partitions",
+        "value_a": 2408,
+        "value_b": 2408,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "groups: attack stats vs split partitions",
+        "value_a": 1487,
+        "value_b": 1487,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "test chunks x seeds vs pooled confusion total",
+        "value_a": 3505,
+        "value_b": 3505,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "test adversarial x seeds vs pooled (tp+fn)",
+        "value_a": 1640,
+        "value_b": 1640,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "test benign x seeds vs pooled (tn+fp)",
+        "value_a": 1865,
+        "value_b": 1865,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "accuracy: reported vs confusion matrix",
+        "value_a": 0.9726105563480741,
+        "value_b": 0.9726105563480741,
+        "tolerance": 0.0001,
+        "passed": true,
+        "note": "v1 reported 92.23% against a matrix implying 86.98%"
+      },
+      {
+        "check": "recall: reported vs confusion matrix",
+        "value_a": 0.9426829268292684,
+        "value_b": 0.9426829268292682,
+        "tolerance": 0.0001,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "fpr: reported vs confusion matrix",
+        "value_a": 0.0010723860589812334,
+        "value_b": 0.0010723860589812334,
+        "tolerance": 0.0001,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "precision: reported vs confusion matrix",
+        "value_a": 0.9987616099071207,
+        "value_b": 0.9987080103359173,
+        "tolerance": 0.0001,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "baseline rows consistent with their own matrices",
+        "value_a": 0,
+        "value_b": 0,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": "v1 baselines conflicted with the repository JSON (R4-4)"
+      },
+      {
+        "check": "module1 dev/test probe pools share no groups",
+        "value_a": 0,
+        "value_b": 0,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "groups spanning partitions",
+        "value_a": 0,
+        "value_b": 0,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "documents spanning partitions",
+        "value_a": 0,
+        "value_b": 0,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      },
+      {
+        "check": "templates spanning partitions",
+        "value_a": 0,
+        "value_b": 0,
+        "tolerance": 1e-06,
+        "passed": true,
+        "note": ""
+      }
+    ],
+    "passed": 16,
+    "total": 16
+  },
+  "ledger": {
+    "corpus_rag_documents": {
+      "value": 1604,
+      "notebook": "NB01",
+      "partition": "corpus",
+      "n": null,
+      "appears_in": [
+        "Table 2",
+        "Section 3.7"
+      ]
+    },
+    "corpus_patient_cases": {
+      "value": 1000,
+      "notebook": "NB01",
+      "partition": "corpus",
+      "n": null,
+      "appears_in": [
+        "Section 3.7"
+      ]
+    },
+    "corpus_drugs": {
+      "value": 336,
+      "notebook": "NB01",
+      "partition": "corpus",
+      "n": null,
+      "appears_in": [
+        "Section 3.7"
+      ]
+    },
+    "dataset_chunks": {
+      "value": 5353,
+      "notebook": "NB02",
+      "partition": "all",
+      "n": 5353,
+      "appears_in": [
+        "Table 2",
+        "Figure 1",
+        "Section 3.7"
+      ]
+    },
+    "dataset_benign": {
+      "value": 2945,
+      "notebook": "NB02",
+      "partition": "all",
+      "n": 5353,
+      "appears_in": [
+        "Table 2",
+        "Figure 1"
+      ]
+    },
+    "dataset_adversarial": {
+      "value": 2408,
+      "notebook": "NB02",
+      "partition": "all",
+      "n": 5353,
+      "appears_in": [
+        "Table 2",
+        "Figure 1"
+      ]
+    },
+    "length_parity_pct": {
+      "value": 0.0,
+      "notebook": "NB02",
+      "partition": "all",
+      "n": 5353,
+      "appears_in": [
+        "Section 3.7"
+      ],
+      "note": "R4-6: v1 had 2,648 vs 20 word medians"
+    },
+    "split_train_chunks": {
+      "value": 3840,
+      "notebook": "NB03",
+      "partition": "train",
+      "n": 3840,
+      "appears_in": [
+        "Table 2"
+      ]
+    },
+    "split_train_adversarial": {
+      "value": 1720,
+      "notebook": "NB03",
+      "partition": "train",
+      "n": 3840,
+      "appears_in": [
+        "Table 2"
+      ]
+    },
+    "split_val_chunks": {
+      "value": 812,
+      "notebook": "NB03",
+      "partition": "val",
+      "n": 812,
+      "appears_in": [
+        "Table 2"
+      ]
+    },
+    "split_val_adversarial": {
+      "value": 360,
+      "notebook": "NB03",
+      "partition": "val",
+      "n": 812,
+      "appears_in": [
+        "Table 2"
+      ]
+    },
+    "split_test_chunks": {
+      "value": 701,
+      "notebook": "NB03",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 2"
+      ]
+    },
+    "split_test_adversarial": {
+      "value": 328,
+      "notebook": "NB03",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 2"
+      ]
+    },
+    "length_only_auc_v2": {
+      "value": 0.5103356110638855,
+      "notebook": "NB03",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Section 4.1"
+      ],
+      "note": "0.50 = no signal"
+    },
+    "length_only_auc_v1_counterfactual": {
+      "value": 1.0,
+      "notebook": "NB03",
+      "partition": "simulated",
+      "n": null,
+      "appears_in": [
+        "Section 4.1"
+      ],
+      "note": "v1's distribution, same probe"
+    },
+    "module1_plaintext_rate": {
+      "value": 0.01876675603217158,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": 373,
+      "appears_in": [
+        "Table 7"
+      ]
+    },
+    "module1_base64_rate": {
+      "value": 1.0,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": 373,
+      "appears_in": [
+        "Table 7"
+      ]
+    },
+    "module1_hex_rate": {
+      "value": 1.0,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": 373,
+      "appears_in": [
+        "Table 7"
+      ]
+    },
+    "module1_unicode_rate": {
+      "value": 1.0,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": 373,
+      "appears_in": [
+        "Table 7"
+      ]
+    },
+    "module1_url_rate": {
+      "value": 1.0,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": 373,
+      "appears_in": [
+        "Table 7"
+      ]
+    },
+    "module1_leet_rate": {
+      "value": 1.0,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": 373,
+      "appears_in": [
+        "Table 7"
+      ]
+    },
+    "module1_control_clean_rate": {
+      "value": 0.02680965147453083,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": 373,
+      "appears_in": [
+        "Table 7"
+      ]
+    },
+    "module1_canonical_mean": {
+      "value": 1.0,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": null,
+      "appears_in": [
+        "Table 7"
+      ]
+    },
+    "module1_adversarial_mean": {
+      "value": 0.7384383378016086,
+      "notebook": "NB04",
+      "partition": "test probe",
+      "n": null,
+      "appears_in": [
+        "Table 7"
+      ],
+      "note": "Microsoft PyRIT suite"
+    },
+    "module2_accuracy": {
+      "value": 0.9726105563480741,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 3",
+        "Table 6"
+      ],
+      "sd": 0.012288077299491012
+    },
+    "module2_precision": {
+      "value": 0.9987616099071207,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 3",
+        "Table 6"
+      ],
+      "sd": 0.002769124430340279
+    },
+    "module2_recall": {
+      "value": 0.9426829268292684,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 3",
+        "Table 6"
+      ],
+      "sd": 0.02814141648588858
+    },
+    "module2_f1": {
+      "value": 0.9697151863642475,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 3",
+        "Table 6"
+      ],
+      "sd": 0.013993794882137036
+    },
+    "module2_auc": {
+      "value": 0.9987379846988818,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 3",
+        "Table 6"
+      ],
+      "sd": 0.0011271019609705448
+    },
+    "module2_fpr": {
+      "value": 0.0010723860589812334,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 3",
+        "Table 6"
+      ],
+      "sd": 0.0023979281260051366
+    },
+    "module2_recall_misinformation": {
+      "value": 0.9030303030303031,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 165,
+      "appears_in": [
+        "Table 3",
+        "Section 4.3"
+      ],
+      "sd": 0.04810456929208347
+    },
+    "module2_recall_override": {
+      "value": 0.9828220858895704,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 163,
+      "appears_in": [
+        "Table 3",
+        "Section 4.3"
+      ],
+      "sd": 0.011800849117589786
+    },
+    "attention_precision_at_k": {
+      "value": 0.6916866518650915,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 200,
+      "appears_in": [
+        "Figure 5"
+      ],
+      "sd": 0.22382712051443926
+    },
+    "attention_random_baseline": {
+      "value": 0.15762405616493208,
+      "notebook": "NB05",
+      "partition": "test",
+      "n": 200,
+      "appears_in": [
+        "Figure 5"
+      ]
+    },
+    "module3_recall": {
+      "value": 0.20426829268292682,
+      "notebook": "NB06",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 6"
+      ]
+    },
+    "module3_precision": {
+      "value": 0.9852941176470589,
+      "notebook": "NB06",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 6"
+      ]
+    },
+    "module3_similarity_auc_document": {
+      "value": 0.45905929019848946,
+      "notebook": "NB06",
+      "partition": "all",
+      "n": null,
+      "appears_in": [
+        "Section 4.4"
+      ],
+      "note": "below chance: the similarity signal does not separate the classes"
+    },
+    "ceps_v1": {
+      "value": 0.867711742864182,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 10"
+      ],
+      "sd": 0.25386983967135085
+    },
+    "ceps_v2_preservation": {
+      "value": 0.867711742864182,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 10"
+      ],
+      "sd": 0.25386983967135085
+    },
+    "ceps_v2_removal": {
+      "value": 0.7042682926829268,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 10"
+      ],
+      "sd": 0.45133279724909736
+    },
+    "ceps_v2_combined": {
+      "value": 0.6066113375578753,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 10"
+      ],
+      "sd": 0.4410745451292498
+    },
+    "ceps_v1_noop": {
+      "value": 1.0,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 10"
+      ],
+      "note": "R4-7: v1 scores a no-op sanitiser perfectly"
+    },
+    "ceps_v2_noop": {
+      "value": 0.0,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 10"
+      ]
+    },
+    "sanitisation_benign_altered_pct": {
+      "value": 7.238605898123325,
+      "notebook": "NB07",
+      "partition": "test benign",
+      "n": 373,
+      "appears_in": [
+        "Section 4.6"
+      ]
+    },
+    "policy_sanitise_and_pass_residual_pct": {
+      "value": 30.48780487804878,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 11"
+      ]
+    },
+    "policy_verify_or_block_residual_pct": {
+      "value": 3.048780487804878,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 11"
+      ]
+    },
+    "policy_detect_and_block_residual_pct": {
+      "value": 3.9634146341463414,
+      "notebook": "NB07",
+      "partition": "test",
+      "n": 328,
+      "appears_in": [
+        "Table 11"
+      ]
+    },
+    "baseline_keyword_accuracy": {
+      "value": 0.49358059914407987,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_keyword_recall": {
+      "value": 0.6432926829268293,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_keyword_fpr": {
+      "value": 0.6380697050938338,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_keyword_f1": {
+      "value": 0.5431145431145431,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_regex_patterns_accuracy": {
+      "value": 0.5920114122681883,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_regex_patterns_recall": {
+      "value": 0.12804878048780488,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_regex_patterns_fpr": {
+      "value": 0.0,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_regex_patterns_f1": {
+      "value": 0.22702702702702704,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_tfidf_lr_accuracy": {
+      "value": 0.6590584878744651,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_tfidf_lr_recall": {
+      "value": 0.3048780487804878,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_tfidf_lr_fpr": {
+      "value": 0.029490616621983913,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_tfidf_lr_f1": {
+      "value": 0.45558086560364464,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_tfidf_svm_accuracy": {
+      "value": 0.62339514978602,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_tfidf_svm_recall": {
+      "value": 0.20426829268292682,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_tfidf_svm_fpr": {
+      "value": 0.00804289544235925,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_tfidf_svm_f1": {
+      "value": 0.33668341708542715,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_char_ngram_lr_accuracy": {
+      "value": 0.6433666191155493,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_char_ngram_lr_recall": {
+      "value": 0.4329268292682927,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_char_ngram_lr_fpr": {
+      "value": 0.17158176943699732,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_char_ngram_lr_f1": {
+      "value": 0.5318352059925093,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_mixture_of_encodings_accuracy": {
+      "value": 0.5320970042796006,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_mixture_of_encodings_recall": {
+      "value": 0.0,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_mixture_of_encodings_fpr": {
+      "value": 0.0,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "baseline_mixture_of_encodings_f1": {
+      "value": 0.0,
+      "notebook": "NB08",
+      "partition": "test",
+      "n": 701,
+      "appears_in": [
+        "Table 4"
+      ]
+    },
+    "transfer_deepset_recall": {
+      "value": 0.5158176943699732,
+      "notebook": "NB08",
+      "partition": "test hosts",
+      "n": 373,
+      "appears_in": [
+        "Table 5"
+      ],
+      "sd": 0.19347208716456432,
+      "note": "external payloads injected into clinical documents"
+    },
+    "asr_clean": {
+      "value": 0.015,
+      "notebook": "NB09",
+      "partition": "test",
+      "n": 200,
+      "appears_in": [
+        "Table 9",
+        "Abstract"
+      ]
+    },
+    "asr_poisoned": {
+      "value": 0.23,
+      "notebook": "NB09",
+      "partition": "test",
+      "n": 200,
+      "appears_in": [
+        "Table 9",
+        "Abstract"
+      ]
+    },
+    "asr_sanitised": {
+      "value": 0.06,
+      "notebook": "NB09",
+      "partition": "test",
+      "n": 200,
+      "appears_in": [
+        "Table 9",
+        "Abstract"
+      ]
+    },
+    "asr_relative_reduction": {
+      "value": 0.7391304347826088,
+      "notebook": "NB09",
+      "partition": "test",
+      "n": 200,
+      "appears_in": [
+        "Table 9",
+        "Abstract"
+      ],
+      "note": "the evidence for 'Neutralizing'"
+    },
+    "asr_mcnemar_p": {
+      "value": 5.398760549724102e-09,
+      "notebook": "NB09",
+      "partition": "test",
+      "n": 200,
+      "appears_in": [
+        "Table 9"
+      ]
+    },
+    "target_llm": {
+      "value": "google/medgemma-4b-it",
+      "notebook": "NB09",
+      "partition": null,
+      "n": null,
+      "appears_in": [
+        "Section 3.9"
+      ]
+    },
+    "mpib_detection_rate": {
+      "value": 0.013745704467353952,
+      "notebook": "NB10",
+      "partition": "V2",
+      "n": 582,
+      "appears_in": [
+        "Table 5"
+      ],
+      "note": "R1-d, R4-2: v1 reported 99-100%, which was the attack success rate"
+    },
+    "mpib_asr2_clean": {
+      "value": 2.577319587628866,
+      "notebook": "NB10",
+      "partition": "V2",
+      "n": 582,
+      "appears_in": [
+        "Table 5"
+      ]
+    },
+    "mpib_cher3_clean": {
+      "value": 1.7182130584192439,
+      "notebook": "NB10",
+      "partition": "V2",
+      "n": 582,
+      "appears_in": [
+        "Table 5"
+      ]
+    },
+    "mpib_asr2_poisoned": {
+      "value": 2.2336769759450172,
+      "notebook": "NB10",
+      "partition": "V2",
+      "n": 582,
+      "appears_in": [
+        "Table 5"
+      ]
+    },
+    "mpib_cher3_poisoned": {
+      "value": 1.8900343642611683,
+      "notebook": "NB10",
+      "partition": "V2",
+      "n": 582,
+      "appears_in": [
+        "Table 5"
+      ]
+    },
+    "mpib_asr2_sanitised": {
+      "value": 2.2336769759450172,
+      "notebook": "NB10",
+      "partition": "V2",
+      "n": 582,
+      "appears_in": [
+        "Table 5"
+      ]
+    },
+    "mpib_cher3_sanitised": {
+      "value": 1.8900343642611683,
+      "notebook": "NB10",
+      "partition": "V2",
+      "n": 582,
+      "appears_in": [
+        "Table 5"
+      ]
+    },
+    "sweep_split_split_70_15_15": {
+      "value": 0.9878744650499287,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.005043557640417623
+    },
+    "sweep_split_split_80_10_10": {
+      "value": 0.9862385321100917,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.009730827264035078
+    },
+    "sweep_split_split_60_20_20": {
+      "value": 0.9874869655891554,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.007373376237607369
+    },
+    "sweep_patience_split_70_15_15_patience_3_ckpt_loss_m1_true_earlier_run_": {
+      "value": 0.9936,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.005
+    },
+    "sweep_patience_patience_2": {
+      "value": 0.9900142653352354,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.0020174230561670805
+    },
+    "sweep_patience_patience_5": {
+      "value": 0.9964336661911555,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.0010087115280835402
+    },
+    "sweep_checkpoint_split_70_15_15_patience_3_ckpt_loss_m1_true_earlier_run_": {
+      "value": 0.9936,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.005
+    },
+    "sweep_checkpoint_checkpoint_on_accuracy": {
+      "value": 0.9957203994293866,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.0020174230561670805
+    },
+    "sweep_module1_split_70_15_15_patience_3_ckpt_loss_m1_true_earlier_run_": {
+      "value": 0.9936,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.005
+    },
+    "sweep_module1_module1_false": {
+      "value": 0.9971469329529244,
+      "notebook": "NB11",
+      "partition": "test",
+      "n": null,
+      "appears_in": [
+        "Table 12"
+      ],
+      "sd": 0.0
+    }
+  },
+  "reviewer_coverage": {
+    "R1-a": {
+      "description": "confusion matrix vs Table 6 inconsistent",
+      "addressed_in": "NB05",
+      "ledger_keys": [
+        "module2_accuracy",
+        "module2_fpr",
+        "module2_recall"
+      ],
+      "note": "every metric recomputed from the pooled matrix and asserted equal"
+    },
+    "R1-b": {
+      "description": "Table 2 vs Figure 3 vs test-set size",
+      "addressed_in": "NB01/NB02/NB03",
+      "ledger_keys": [
+        "dataset_chunks",
+        "split_train_chunks",
+        "split_val_chunks",
+        "split_test_chunks"
+      ],
+      "note": "partition sizes derived from one manifest and cross-checked"
+    },
+    "R1-c": {
+      "description": "CEPS values and sample counts inconsistent",
+      "addressed_in": "NB07",
+      "ledger_keys": [
+        "ceps_v1",
+        "ceps_v2_combined"
+      ],
+      "note": "every CEPS figure carries its partition and n"
+    },
+    "R1-d": {
+      "description": "MPIB ASR reported as detection",
+      "addressed_in": "NB10",
+      "ledger_keys": [
+        "mpib_detection_rate",
+        "mpib_asr2_poisoned"
+      ],
+      "note": "detection and ASR reported as separate quantities"
+    },
+    "R1-e": {
+      "description": "encoded variants split across partitions",
+      "addressed_in": "NB02/NB03",
+      "ledger_keys": [
+        "split_train_chunks"
+      ],
+      "note": "group_id assigned at corpus build, inherited by every variant; asserted at split time"
+    },
+    "R1-f": {
+      "description": "'neutralizing' unevidenced end to end",
+      "addressed_in": "NB09",
+      "ledger_keys": [
+        "asr_poisoned",
+        "asr_sanitised",
+        "asr_relative_reduction",
+        "asr_mcnemar_p"
+      ],
+      "note": "attack success measured on a target LLM before and after"
+    },
+    "R2-1": {
+      "description": "payloads concatenated, testing direct not indirect injection",
+      "addressed_in": "NB02",
+      "ledger_keys": [
+        "dataset_adversarial"
+      ],
+      "note": "attacks injected into retrieved documents"
+    },
+    "R2-2": {
+      "description": "Deepset payloads are generic, not clinical",
+      "addressed_in": "NB02",
+      "ledger_keys": [
+        "dataset_adversarial"
+      ],
+      "note": "four clinically specific categories, drug-aware"
+    },
+    "R2-3": {
+      "description": "PubMed abstracts are not clinical data",
+      "addressed_in": "NB01",
+      "ledger_keys": [
+        "corpus_rag_documents",
+        "corpus_drugs"
+      ],
+      "note": "openFDA structured drug labelling"
+    },
+    "R2-4": {
+      "description": "Figure 1 redundant with Table 1",
+      "addressed_in": "manuscript",
+      "ledger_keys": [],
+      "note": "figure removed, downstream figures renumbered"
+    },
+    "R3-seeds": {
+      "description": "single training run",
+      "addressed_in": "NB05",
+      "ledger_keys": [
+        "module2_accuracy",
+        "module2_recall"
+      ],
+      "note": "five seeds, mean +/- SD and 95% CI throughout"
+    },
+    "R3-Q1": {
+      "description": "how does it improve on existing methods",
+      "addressed_in": "NB08",
+      "ledger_keys": [
+        "baseline_tfidf_lr_accuracy",
+        "module2_accuracy"
+      ],
+      "note": ""
+    },
+    "R3-Q2": {
+      "description": "five obfuscation formats and their validation",
+      "addressed_in": "NB04",
+      "ledger_keys": [
+        "module1_base64_rate",
+        "module1_leet_rate"
+      ],
+      "note": "per-format rates with Wilson intervals, n stated"
+    },
+    "R3-Q3": {
+      "description": "attention reliability vs alternatives",
+      "addressed_in": "NB05",
+      "ledger_keys": [
+        "attention_precision_at_k",
+        "attention_random_baseline"
+      ],
+      "note": "precision@k against a random baseline"
+    },
+    "R3-Q4": {
+      "description": "computational overhead and real-time feasibility",
+      "addressed_in": "NB05",
+      "ledger_keys": [],
+      "note": ""
+    },
+    "R3-Q5": {
+      "description": "CEPS validated against clinicians",
+      "addressed_in": "not run",
+      "ledger_keys": [],
+      "note": "stated in Limitations as un-validated against expert judgement"
+    },
+    "R3-Q6": {
+      "description": "reproducibility of datasets and protocols",
+      "addressed_in": "repository",
+      "ledger_keys": [],
+      "note": "corpus, splits, modules and results deposited"
+    },
+    "R3-Q7": {
+      "description": "justification for 70/15/15",
+      "addressed_in": "NB11",
+      "ledger_keys": [],
+      "note": "swept against 80/10/10 and 60/20/20; within seed spread"
+    },
+    "R3-Q8": {
+      "description": "checkpoint on accuracy, early stop on loss",
+      "addressed_in": "NB11",
+      "ledger_keys": [],
+      "note": "one criterion now governs both; the difference is within spread"
+    },
+    "R3-Q9": {
+      "description": "rationale for patience=3",
+      "addressed_in": "NB11",
+      "ledger_keys": [],
+      "note": "swept 2, 3 and 5; within seed spread"
+    },
+    "R3-Q10": {
+      "description": "quantitative localisation metrics and failure cases",
+      "addressed_in": "NB05",
+      "ledger_keys": [
+        "attention_precision_at_k"
+      ],
+      "note": "precision@k, IoU, random baseline, failure cases printed"
+    },
+    "R3-MoE": {
+      "description": "head-to-head against Mixture of Encodings",
+      "addressed_in": "NB08",
+      "ledger_keys": [
+        "baseline_mixture_of_encodings_recall"
+      ],
+      "note": "benchmarked; prevention-only, emits no detection signal"
+    },
+    "R3-decode": {
+      "description": "ablation: does decoding before detection help",
+      "addressed_in": "NB11",
+      "ledger_keys": [],
+      "note": "no measurable effect on Module 2; value is in NB04 robustness"
+    },
+    "R4-1": {
+      "description": "text classification, not end-to-end",
+      "addressed_in": "NB09",
+      "ledger_keys": [
+        "asr_poisoned",
+        "asr_sanitised"
+      ],
+      "note": ""
+    },
+    "R4-2": {
+      "description": "ASR and CHER treated as detector-miss rates",
+      "addressed_in": "NB10",
+      "ledger_keys": [
+        "mpib_detection_rate",
+        "mpib_asr2_poisoned",
+        "mpib_cher3_poisoned"
+      ],
+      "note": ""
+    },
+    "R4-3": {
+      "description": "Figure 6 implies 86.98% vs Table 6's 92.23%",
+      "addressed_in": "NB05/NB12",
+      "ledger_keys": [
+        "module2_accuracy",
+        "module2_fpr"
+      ],
+      "note": "reconciliation gate in Cell 4"
+    },
+    "R4-4": {
+      "description": "baselines conflict with repository JSON",
+      "addressed_in": "NB08",
+      "ledger_keys": [
+        "baseline_tfidf_lr_accuracy"
+      ],
+      "note": "each row asserted consistent with its own matrix"
+    },
+    "R4-5": {
+      "description": "Figure 3 totals 6,453 vs Table 2's 6,627",
+      "addressed_in": "NB12",
+      "ledger_keys": [
+        "dataset_chunks"
+      ],
+      "note": "single source, cross-checked"
+    },
+    "R4-6": {
+      "description": "length confounding",
+      "addressed_in": "NB02/NB03",
+      "ledger_keys": [
+        "length_parity_pct",
+        "length_only_auc_v2",
+        "length_only_auc_v1_counterfactual"
+      ],
+      "note": "removed by construction and measured"
+    },
+    "R4-7": {
+      "description": "CEPS scores no-op sanitisation perfectly",
+      "addressed_in": "NB07",
+      "ledger_keys": [
+        "ceps_v1_noop",
+        "ceps_v2_noop",
+        "ceps_v2_removal"
+      ],
+      "note": "CEPS v2 pairs preservation with removal"
+    },
+    "R4-8": {
+      "description": "repository omits Module 3, Module 5, scripts, checkpoints",
+      "addressed_in": "repo",
+      "ledger_keys": [],
+      "note": "modules exported to src/ as each notebook runs"
+    },
+    "R4-9": {
+      "description": "MPIB restricted payload registry redistributed",
+      "addressed_in": "repo",
+      "ledger_keys": [],
+      "note": "removed from the working tree and from git history on both branches; .gitignore added"
+    },
+    "R4-10": {
+      "description": "Figure 7 caption contradicts the figure",
+      "addressed_in": "NB05",
+      "ledger_keys": [
+        "attention_precision_at_k"
+      ],
+      "note": "figure generated from a confirmed true positive"
+    }
+  },
+  "generated_at": "2026-09-18 12:13:55 UTC"
+}
