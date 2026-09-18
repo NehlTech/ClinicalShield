@@ -60,17 +60,6 @@
         "exceeds_seed_spread": false,
         "is_baseline": false,
         "cohort": "length-matched (rerun)"
-      },
-      "split=70/15/15 patience=3 ckpt=loss m1=True (earlier run)": {
-        "accuracy": 0.9936,
-        "accuracy_sd": 0.005,
-        "recall": null,
-        "fpr": null,
-        "delta_vs_baseline": 0.0,
-        "exceeds_seed_spread": false,
-        "is_baseline": true,
-        "cohort": "length-matched (rerun)",
-        "note": "restored from the original run"
       }
     },
     "patience": {
@@ -408,5 +397,5 @@
     ],
     "split=70/15/15 patience=3 ckpt=loss m1=True (earlier run)": []
   },
-  "generated_at": "2026-09-18 09:51:12 UTC"
+  "generated_at": "2026-09-18 09:56:13 UTC"
 }
