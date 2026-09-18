@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\caption{Evaluation corpus and partitions. Chunks are retrieval-sized passages derived from openFDA drug labelling; a group is one source document, and no group spans partitions.}
+\label{tab:dataset}
+\begin{tabular}{lrrrrr}
+\hline
+Partition & Chunks & Groups & Benign & Adversarial & \% adv. \\
+\hline
+Train & 3840 & 1041 & 2120 & 1720 & 44.8\% \\
+Val & 812 & 223 & 452 & 360 & 44.3\% \\
+Test & 701 & 223 & 373 & 328 & 46.8\% \\
+\textbf{Total} & 5353 & 1487 & 2945 & 2408 & 45.0\% \\
+\hline
+\end{tabular}
+\\[2pt]\footnotesize{Attack template pools are disjoint across partitions: 48 phrasings in training, 16 in validation, 16 in test.}
+\end{table}

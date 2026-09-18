@@ -1,0 +1,62 @@
+% Figure and table captions, generated with the figures themselves.
+% Every number here is read from all_paper_numbers.json.
+
+% figure: fig_class_balance
+\caption{Class distribution of the evaluation corpus (n=5353 retrieval chunks derived from openFDA drug labelling).}
+\label{fig:class-balance}
+
+% figure: fig_length_confound
+\caption{Length confounding. Left: benign and adversarial chunks are drawn from the same length distribution by construction. Right: a classifier given only word count achieves AUC 0.5103 here against 1.0000 on a reconstruction of the original design.}
+\label{fig:length-confound}
+
+% figure: fig_confusion_matrix
+\caption{Pooled confusion matrix across 5 seeds on the held-out partition (n=3505 predictions). Accuracy, recall and false-positive rate printed above are computed from these counts and match Table~\ref{tab:detection}.}
+\label{fig:confusion}
+
+% figure: fig_recall_by_vector
+\caption{Detection recall by attack vector, mean $\pm$ SD across five seeds. Misinformation payloads carry no syntactic markers and are detected less reliably and less consistently (Welch $t=3.60$, $p=0.019$).}
+\label{fig:recall-vector}
+
+% figure: fig_attention_localisation
+\caption{Attention localisation. Precision@k of the highest-attention tokens against the ground-truth injection span (n=200), compared with random selection over the same texts.}
+\label{fig:attention}
+
+% figure: fig_ceps_comparison
+\caption{CEPS v1 against v2 across sanitisation strategies (n=328 adversarial chunks). A sanitiser that removes nothing scores 1.0000 under v1 and 0.0000 under v2.}
+\label{fig:ceps}
+
+% figure: fig_asr_reduction
+\caption{End-to-end attack success against google/medgemma-4b-it (n=200). Sanitisation reduces attack success by 73.9\% relative (McNemar $p=5.4e-09$); the clean condition gives the base rate with no attack present.}
+\label{fig:asr}
+
+% figure: fig_mpib
+\caption{MPIB V2 (n=582). Detection rate and attack success rate are distinct quantities measured on different objects; the original manuscript reported the latter as the former.}
+\label{fig:mpib}
+
+% figure: fig_encoding_robustness
+\caption{Module 1 detection by obfuscation format (n=373 per format, Wilson 95\% intervals). Left: the five formats the module is specified to handle. Right: adversarial variants generated with Microsoft PyRIT, covering the character-injection taxonomy of Hackett et al.}
+\label{fig:encodings}
+
+% table: tab_dataset
+\caption{dataset composition}
+\label{tab:dataset}
+
+% table: tab_detection
+\caption{detection metrics}
+\label{tab:detection}
+
+% table: tab_ceps
+\caption{CEPS comparison}
+\label{tab:ceps}
+
+% table: tab_asr
+\caption{end-to-end ASR}
+\label{tab:asr}
+
+% table: tab_baselines
+\caption{baseline comparison}
+\label{tab:baselines}
+
+% table: tab_sweeps
+\caption{sensitivity sweeps}
+\label{tab:sweeps}

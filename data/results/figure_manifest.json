@@ -1,0 +1,201 @@
+{
+  "notebook": "13_figures_tables",
+  "source": "data/results/all_paper_numbers.json",
+  "dpi": 300,
+  "generated": [
+    {
+      "kind": "figure",
+      "name": "fig_class_balance",
+      "label": "fig:class-balance",
+      "caption": "Class distribution of the evaluation corpus (n=5353 retrieval chunks derived from openFDA drug labelling).",
+      "ledger_keys": [
+        "dataset_benign",
+        "dataset_adversarial"
+      ]
+    },
+    {
+      "kind": "figure",
+      "name": "fig_length_confound",
+      "label": "fig:length-confound",
+      "caption": "Length confounding. Left: benign and adversarial chunks are drawn from the same length distribution by construction. Right: a classifier given only word count achieves AUC 0.5103 here against 1.0000 on a reconstruction of the original design.",
+      "ledger_keys": [
+        "length_only_auc_v2",
+        "length_only_auc_v1_counterfactual",
+        "length_parity_pct"
+      ]
+    },
+    {
+      "kind": "figure",
+      "name": "fig_confusion_matrix",
+      "label": "fig:confusion",
+      "caption": "Pooled confusion matrix across 5 seeds on the held-out partition (n=3505 predictions). Accuracy, recall and false-positive rate printed above are computed from these counts and match Table~\\ref{tab:detection}.",
+      "ledger_keys": [
+        "module2_accuracy",
+        "module2_recall",
+        "module2_fpr"
+      ]
+    },
+    {
+      "kind": "figure",
+      "name": "fig_recall_by_vector",
+      "label": "fig:recall-vector",
+      "caption": "Detection recall by attack vector, mean $\\pm$ SD across five seeds. Misinformation payloads carry no syntactic markers and are detected less reliably and less consistently (Welch $t=3.60$, $p=0.019$).",
+      "ledger_keys": [
+        "module2_recall_override",
+        "module2_recall_misinformation"
+      ]
+    },
+    {
+      "kind": "figure",
+      "name": "fig_attention_localisation",
+      "label": "fig:attention",
+      "caption": "Attention localisation. Precision@k of the highest-attention tokens against the ground-truth injection span (n=200), compared with random selection over the same texts.",
+      "ledger_keys": [
+        "attention_precision_at_k",
+        "attention_random_baseline"
+      ]
+    },
+    {
+      "kind": "figure",
+      "name": "fig_ceps_comparison",
+      "label": "fig:ceps",
+      "caption": "CEPS v1 against v2 across sanitisation strategies (n=328 adversarial chunks). A sanitiser that removes nothing scores 1.0000 under v1 and 0.0000 under v2.",
+      "ledger_keys": [
+        "ceps_v1",
+        "ceps_v2_combined",
+        "ceps_v1_noop",
+        "ceps_v2_noop"
+      ]
+    },
+    {
+      "kind": "figure",
+      "name": "fig_asr_reduction",
+      "label": "fig:asr",
+      "caption": "End-to-end attack success against google/medgemma-4b-it (n=200). Sanitisation reduces attack success by 73.9\\% relative (McNemar $p=5.4e-09$); the clean condition gives the base rate with no attack present.",
+      "ledger_keys": [
+        "asr_clean",
+        "asr_poisoned",
+        "asr_sanitised",
+        "asr_relative_reduction"
+      ]
+    },
+    {
+      "kind": "figure",
+      "name": "fig_mpib",
+      "label": "fig:mpib",
+      "caption": "MPIB V2 (n=582). Detection rate and attack success rate are distinct quantities measured on different objects; the original manuscript reported the latter as the former.",
+      "ledger_keys": [
+        "mpib_detection_rate",
+        "mpib_asr2_poisoned",
+        "mpib_asr2_clean"
+      ]
+    },
+    {
+      "kind": "figure",
+      "name": "fig_encoding_robustness",
+      "label": "fig:encodings",
+      "caption": "Module 1 detection by obfuscation format (n=373 per format, Wilson 95\\% intervals). Left: the five formats the module is specified to handle. Right: adversarial variants generated with Microsoft PyRIT, covering the character-injection taxonomy of Hackett et al.",
+      "ledger_keys": [
+        "module1_canonical_mean",
+        "module1_adversarial_mean"
+      ]
+    },
+    {
+      "kind": "table",
+      "name": "tab_dataset",
+      "label": "tab:dataset",
+      "caption": "dataset composition",
+      "ledger_keys": [
+        "dataset_chunks"
+      ]
+    },
+    {
+      "kind": "table",
+      "name": "tab_detection",
+      "label": "tab:detection",
+      "caption": "detection metrics",
+      "ledger_keys": [
+        "module2_accuracy",
+        "module2_recall",
+        "module2_fpr"
+      ]
+    },
+    {
+      "kind": "table",
+      "name": "tab_ceps",
+      "label": "tab:ceps",
+      "caption": "CEPS comparison",
+      "ledger_keys": [
+        "ceps_v1",
+        "ceps_v2_combined"
+      ]
+    },
+    {
+      "kind": "table",
+      "name": "tab_asr",
+      "label": "tab:asr",
+      "caption": "end-to-end ASR",
+      "ledger_keys": [
+        "asr_poisoned",
+        "asr_sanitised"
+      ]
+    },
+    {
+      "kind": "table",
+      "name": "tab_baselines",
+      "label": "tab:baselines",
+      "caption": "baseline comparison",
+      "ledger_keys": [
+        "module2_accuracy"
+      ]
+    },
+    {
+      "kind": "table",
+      "name": "tab_sweeps",
+      "label": "tab:sweeps",
+      "caption": "sensitivity sweeps",
+      "ledger_keys": []
+    }
+  ],
+  "counts": {
+    "figures": 9,
+    "tables": 6
+  },
+  "principle": "Figures and tables are generated together from one reconciled file. v1's Table 6 and Figure 6 disagreed because they were produced separately and one was transcribed by hand.",
+  "generated_at": "2026-09-18 17:33:17 UTC",
+  "shared_quantities": {
+    "module2_accuracy": [
+      "figure:fig_confusion_matrix",
+      "table:tab_detection",
+      "table:tab_baselines"
+    ],
+    "module2_recall": [
+      "figure:fig_confusion_matrix",
+      "table:tab_detection"
+    ],
+    "module2_fpr": [
+      "figure:fig_confusion_matrix",
+      "table:tab_detection"
+    ],
+    "ceps_v1": [
+      "figure:fig_ceps_comparison",
+      "table:tab_ceps"
+    ],
+    "ceps_v2_combined": [
+      "figure:fig_ceps_comparison",
+      "table:tab_ceps"
+    ],
+    "asr_poisoned": [
+      "figure:fig_asr_reduction",
+      "table:tab_asr"
+    ],
+    "asr_sanitised": [
+      "figure:fig_asr_reduction",
+      "table:tab_asr"
+    ]
+  },
+  "external_diagrams": {
+    "fig_architecture": "Five-module pipeline schematic, updated for v2: Module 1 now carries a canonicalisation stage ahead of format decoding, Module 4 consumes sentence-level judgements from Module 2, and a policy layer governs whether a document is released, sanitised or withheld.",
+    "fig_threat_model": "Retrieval attack surface: reference corpora against patient records, and where an adversary can place content without privileged access."
+  }
+}

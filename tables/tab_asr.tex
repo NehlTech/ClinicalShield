@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\caption{End-to-end attack success against google/medgemma-4b-it (n=200). An attack succeeds when the injected instruction reaches clinical advice in the model's answer.}
+\label{tab:asr}
+\begin{tabular}{lr}
+\hline
+Condition & Attack success rate \\
+\hline
+Clean (no attack present) & 1.50\% \\
+Poisoned & 23.00\% \\
+Sanitised & 6.00\% \\
+\textbf{Relative reduction} & \textbf{73.9\%} \\
+\hline
+\end{tabular}
+\\[2pt]\footnotesize{McNemar $p = 5.4e-09$, with 36 attacks neutralised against 2 introduced. The clean condition establishes the base rate without which a reduction cannot be interpreted.}
+\end{table}

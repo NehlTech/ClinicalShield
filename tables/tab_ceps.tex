@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\caption{CEPS v1 against v2 across sanitisation strategies (n=328 adversarial chunks, held-out partition). v1 measures preservation alone and therefore cannot distinguish targeted sanitisation from a sanitiser that removes nothing.}
+\label{tab:ceps}
+\begin{tabular}{lrrrr}
+\hline
+Strategy & Preservation & Removal & CEPS v1 & CEPS v2 \\
+\hline
+no-op & 1.0000 & 0.0000 & 1.0000 & \textbf{0.0000} \\
+block-and-drop & 0.0122 & 1.0000 & 0.0122 & \textbf{0.0122} \\
+v1 rule & 0.9808 & 0.1341 & 0.9808 & \textbf{0.1455} \\
+v2 rules & 0.9808 & 0.1341 & 0.9808 & \textbf{0.1455} \\
+v2 rules + intent classifier & 0.8677 & 0.7043 & 0.8677 & \textbf{0.6066} \\
++ adjacency & 0.8677 & 0.7043 & 0.8677 & \textbf{0.6066} \\
+\hline
+\end{tabular}
+\\[2pt]\footnotesize{CEPS v2 is the harmonic mean of preservation and removal; either component at zero yields zero. Removal is scored per payload sentence against the ground-truth injected text.}
+\end{table}

@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{Comparison against baselines on identical partitions with identical Module 1 ingestion (n=701).}
+\label{tab:baselines}
+\begin{tabular}{lrrrrr}
+\hline
+Method & Accuracy & Precision & Recall & FPR & F1 \\
+\hline
+keyword & 0.4936 & 0.4699 & 0.6433 & 0.6381 & 0.5431 \\
+regex patterns & 0.5920 & 1.0000 & 0.1280 & 0.0000 & 0.2270 \\
+tfidf lr & 0.6591 & 0.9009 & 0.3049 & 0.0295 & 0.4556 \\
+tfidf svm & 0.6234 & 0.9571 & 0.2043 & 0.0080 & 0.3367 \\
+char ngram lr & 0.6434 & 0.6893 & 0.4329 & 0.1716 & 0.5318 \\
+mixture of encodings & 0.5321 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\
+\textbf{ClinicalShield} & \textbf{0.9726} & \textbf{0.9988} & \textbf{0.9427} & \textbf{0.0011} & \textbf{0.9697} \\
+\hline
+\end{tabular}
+\\[2pt]\footnotesize{Mixture of Encodings is a prevention-only defence: it re-encodes input to neutralise obfuscation and emits no detection signal, so its recall against an injection is zero by construction.}
+\end{table}

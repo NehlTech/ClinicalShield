@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{Sensitivity analysis. Each factor varied with all others held at the baseline configuration, two seeds per arm.}
+\label{tab:sweeps}
+\begin{tabular}{llrrc}
+\hline
+Sweep & Configuration & Accuracy & $\Delta$ & Beyond spread \\
+\hline
+split & split=70/15/15 & $0.9879 \pm 0.0050$ & +0.0000 & no \\
+split & split=80/10/10 & $0.9862 \pm 0.0097$ & -0.0016 & no \\
+split & split=60/20/20 & $0.9875 \pm 0.0074$ & -0.0004 & no \\
+patience & patience=2 & $0.9900 \pm 0.0020$ & -0.0036 & no \\
+patience & patience=5 & $0.9964 \pm 0.0010$ & +0.0028 & no \\
+checkpoint & checkpoint_on=accuracy & $0.9957 \pm 0.0020$ & +0.0021 & no \\
+module1 & module1=False & $0.9971 \pm 0.0000$ & +0.0035 & no \\
+\hline
+\end{tabular}
+\\[2pt]\footnotesize{An arm is reported as sensitive only where its change exceeds the variation observed across seeds at fixed settings.}
+\end{table}
