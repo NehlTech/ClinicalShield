@@ -21,12 +21,7 @@
     "resplitting": "Changing the ratio re-partitions the data, and NB02 assigns payload templates per partition. Dropping mismatched chunks lost 23% and lost different amounts per ratio, confounding the comparison with sample size. The dataset is instead regenerated per ratio using the recorded injection spans, so every chunk is retained and both group and template disjointness are re-verified.",
     "length_parity": "The host recovered by cutting out the payload span is already short by the old payload's length. An initial version trimmed it again by the new payload's length, leaving adversarial chunks ~16 words shorter than benign ones and reintroducing the confound of R4-6; baseline accuracy read 0.9936 against 0.9726 in NB05. Injection now pins the result to the original word count, and the split verifier asserts parity below 5%.",
     "split_arms_rerun": true,
-    "arms_carried_forward": [
-      "patience=2",
-      "patience=5",
-      "checkpoint_on=accuracy",
-      "module1=False"
-    ]
+    "arms_carried_forward": []
   },
   "questions": {
     "R3-Q7": "justification for 70/15/15 and comparison against alternatives",
@@ -65,11 +60,98 @@
         "exceeds_seed_spread": false,
         "is_baseline": false,
         "cohort": "length-matched (rerun)"
+      },
+      "split=70/15/15 patience=3 ckpt=loss m1=True (earlier run)": {
+        "accuracy": 0.9936,
+        "accuracy_sd": 0.005,
+        "recall": null,
+        "fpr": null,
+        "delta_vs_baseline": 0.0,
+        "exceeds_seed_spread": false,
+        "is_baseline": true,
+        "cohort": "length-matched (rerun)",
+        "note": "restored from the original run"
       }
     },
-    "patience": {},
-    "checkpoint": {},
-    "module1": {}
+    "patience": {
+      "split=70/15/15 patience=3 ckpt=loss m1=True (earlier run)": {
+        "accuracy": 0.9936,
+        "accuracy_sd": 0.005,
+        "recall": null,
+        "fpr": null,
+        "delta_vs_baseline": 0.0,
+        "exceeds_seed_spread": false,
+        "is_baseline": true,
+        "cohort": "earlier cohort",
+        "note": "restored from the original run"
+      },
+      "patience=2": {
+        "accuracy": 0.9900142653352354,
+        "accuracy_sd": 0.0020174230561670805,
+        "recall": 0.9878048780487805,
+        "fpr": 0.00804289544235925,
+        "delta_vs_baseline": -0.0035857346647646393,
+        "exceeds_seed_spread": false,
+        "is_baseline": false,
+        "cohort": "earlier cohort"
+      },
+      "patience=5": {
+        "accuracy": 0.9964336661911555,
+        "accuracy_sd": 0.0010087115280835402,
+        "recall": 0.9954268292682926,
+        "fpr": 0.002680965147453083,
+        "delta_vs_baseline": 0.0028336661911554373,
+        "exceeds_seed_spread": false,
+        "is_baseline": false,
+        "cohort": "earlier cohort"
+      }
+    },
+    "checkpoint": {
+      "split=70/15/15 patience=3 ckpt=loss m1=True (earlier run)": {
+        "accuracy": 0.9936,
+        "accuracy_sd": 0.005,
+        "recall": null,
+        "fpr": null,
+        "delta_vs_baseline": 0.0,
+        "exceeds_seed_spread": false,
+        "is_baseline": true,
+        "cohort": "earlier cohort",
+        "note": "restored from the original run"
+      },
+      "checkpoint_on=accuracy": {
+        "accuracy": 0.9957203994293866,
+        "accuracy_sd": 0.0020174230561670805,
+        "recall": 0.9939024390243902,
+        "fpr": 0.002680965147453083,
+        "delta_vs_baseline": 0.002120399429386577,
+        "exceeds_seed_spread": false,
+        "is_baseline": false,
+        "cohort": "earlier cohort"
+      }
+    },
+    "module1": {
+      "split=70/15/15 patience=3 ckpt=loss m1=True (earlier run)": {
+        "accuracy": 0.9936,
+        "accuracy_sd": 0.005,
+        "recall": null,
+        "fpr": null,
+        "delta_vs_baseline": 0.0,
+        "exceeds_seed_spread": false,
+        "is_baseline": true,
+        "cohort": "earlier cohort",
+        "note": "restored from the original run"
+      },
+      "module1=False": {
+        "accuracy": 0.9971469329529244,
+        "accuracy_sd": 0.0,
+        "recall": 0.9969512195121951,
+        "fpr": 0.002680965147453083,
+        "delta_vs_baseline": 0.0035469329529244087,
+        "exceeds_seed_spread": false,
+        "is_baseline": false,
+        "cohort": "earlier cohort"
+      }
+    }
   },
   "per_run": {
     "split=70/15/15": [
@@ -323,7 +405,8 @@
         "seed": 42,
         "minutes": 7.017334830760956
       }
-    ]
+    ],
+    "split=70/15/15 patience=3 ckpt=loss m1=True (earlier run)": []
   },
-  "generated_at": "2026-09-18 09:33:47 UTC"
+  "generated_at": "2026-09-18 09:49:41 UTC"
 }
