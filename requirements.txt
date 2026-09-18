@@ -1,12 +1,31 @@
+# Core
 torch>=2.1.0
 transformers>=4.36.0
+accelerate>=0.25.0
 datasets>=2.16.0
-accelerates>=0.25.0
+
+# Data and metrics
 pandas>=2.1.0
 numpy>=1.24.0
+scipy>=1.10.0
 scikit-learn>=1.3.0
+
+# Module 1: canonicalisation layer
+unidecode>=1.3.0
+
+# Module 5: openFDA label retrieval
+requests>=2.31.0
+
+# Figures
 matplotlib>=3.8.0
 seaborn>=0.13.0
 wordcloud>=1.9.0
+
+# Utilities
 pyyaml>=6.0
 tqdm>=4.66.0
+
+# Optional. Only needed to reproduce the adversarial encoding evaluation in
+# notebooks/04_module1_encoding.ipynb, which generates variants with Microsoft
+# PyRIT. Large dependency tree; the canonical-format results run without it.
+# pyrit>=1.1.0

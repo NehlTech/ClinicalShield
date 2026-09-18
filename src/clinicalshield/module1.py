@@ -365,23 +365,29 @@ def recover(text):
 
 
 
-BENIGN_TYPOGRAPHY = {
-    "\u2265": ">=", "\u2264": "<=", "\u2260": "!=", "\u2248": "~",
-    "\u2191": "|", "\u2193": "|", "\u2192": "->", "\u2190": "<-",
-    "\u201c": '"', "\u201d": '"', "\u2018": "'", "\u2019": "'",
-    "\u2014": "--", "\u2013": "-", "\u2026": "...",
-    "\u00b5": "u", "\u03bc": "u", "\u00b0": "deg", "\u00b1": "+/-",
-    "\u00ae": "(R)", "\u2122": "(TM)", "\u00a9": "(C)",
-    "\u00d7": "x", "\u00b7": ".", "\u00bd": "1/2", "\u00bc": "1/4",
-    "\u2020": "+", "\u2021": "++", "\u00a7": "S", "\u00b6": "P",
-    "\u03b1": "alpha", "\u03b2": "beta", "\u03b3": "gamma", "\u03ba": "kappa",
-    "\u00a0": " ",
-}
+# Typography that appears routinely in regulated drug labels. Transliterating
+# these is correct behaviour, not evidence of obfuscation, so both sides of the
+# drift comparison pass through the same transformation first.
+#
+# The replacements are taken FROM unidecode rather than written by hand. A
+# hand-written map disagreed with unidecode on 17 of 35 characters -- it mapped
+# alpha to "alpha" where unidecode gives "a", and the section sign to "S" where
+# unidecode gives "SS" -- so those substitutions failed to cancel and short
+# sentences containing them registered as drift.
+BENIGN_TYPOGRAPHY_CHARS = frozenset(
+    "\u2265\u2264\u2260\u2248\u2191\u2193\u2192\u2190"
+    "\u201c\u201d\u2018\u2019\u2014\u2013\u2026"
+    "\u00b5\u03bc\u00b0\u00b1\u00ae\u2122\u00a9\u00d7\u00b7"
+    "\u00bd\u00bc\u2020\u2021\u00a7\u00b6"
+    "\u03b1\u03b2\u03b3\u03b4\u03ba\u03bb\u03c3\u03c9\u00a0"
+    "\u2030\u00b2\u00b3\u00b9\u00ab\u00bb\u2032\u2033"
+)
+
 
 def _neutralise_typography(s):
-    for k, v in BENIGN_TYPOGRAPHY.items():
-        s = s.replace(k, v)
-    return s
+    """Apply the canonicaliser's own transformation to expected typography, so
+    converting it counts as no change while genuine obfuscation still registers."""
+    return "".join(unidecode(c) if c in BENIGN_TYPOGRAPHY_CHARS else c for c in s)
 
 
 def _alteration(raw, canonical, window=160):
