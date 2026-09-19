@@ -162,7 +162,7 @@
     "tables": 6
   },
   "principle": "Figures and tables are generated together from one reconciled file. v1's Table 6 and Figure 6 disagreed because they were produced separately and one was transcribed by hand.",
-  "generated_at": "2026-09-18 17:33:17 UTC",
+  "generated_at": "2026-09-19 15:19:33 UTC",
   "shared_quantities": {
     "module2_accuracy": [
       "figure:fig_confusion_matrix",
