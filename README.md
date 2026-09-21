@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-310/)
 [![Venue: Scientific Reports](https://img.shields.io/badge/Venue-Scientific%20Reports-red.svg)]()
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22874032.svg)](https://doi.org/10.5281/zenodo.22874032)
 
 > **Paper:** ClinicalShield: A Multi-Layer Defence Framework for Detecting and Neutralizing Indirect Prompt Injection Attacks in RAG-Based Clinical Decision Support Systems
 > **Authors:** Adu-Boahene Bright, Oliver Kornyo, Seiba Alhassan, Siddique Abubakr Muntaka, Yaw Afriyie
@@ -219,7 +219,7 @@ If you use ClinicalShield in your research, please cite:
              and Muntaka, Siddique Abubakr and Afriyie, Yaw},
   journal = {Scientific Reports},
   year    = {2026},
-  doi     = {10.5281/zenodo.XXXXXXX}
+  doi     = {10.5281/zenodo.22874032}
 }
 ```
 
