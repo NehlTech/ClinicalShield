@@ -18,9 +18,9 @@
 
 Clinical Decision Support Systems (CDSSs) increasingly combine Large Language Models with Retrieval-Augmented Generation (RAG) pipelines, retrieving documents from pharmacological databases, clinical guidelines and adverse event registries before generating recommendations. This architecture introduces a critical vulnerability: every retrieved document is a potential attack surface.
 
-**Indirect Prompt Injection** exploits this by embedding malicious instructions inside documents that the RAG retriever is likely to surface — without any direct access to the model, the user session, or the hospital system. A single poisoned drug label can cause a clinical AI to recommend a contraindicated medication, suppress an allergy warning, or override a dosing guideline.
+**Indirect Prompt Injection** exploits this by embedding malicious instructions inside documents that the RAG retriever is likely to surface without any direct access to the model, the user session, or the hospital system. A single poisoned drug label can cause a clinical AI to recommend a contraindicated medication, suppress an allergy warning, or override a dosing guideline.
 
-ClinicalShield is the first defence framework built specifically for this threat in a clinical setting. It processes every retrieved document through five sequential modules that detect encoded and disguised payloads, verify document intent, remove adversarial content while preserving clinical information, and verify drug-property claims against FDA labelling — all without discarding the clinical content the physician needs.
+ClinicalShield is the first defence framework built specifically for this threat in a clinical setting. It processes every retrieved document through five sequential modules that detect encoded and disguised payloads, verify document intent, remove adversarial content while preserving clinical information, and verify drug-property claims against FDA labelling all without discarding the clinical content the physician needs.
 
 ---
 
